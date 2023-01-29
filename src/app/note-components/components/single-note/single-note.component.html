@@ -1,0 +1,5 @@
+<div class="single-note" *ngIf="note$ | async as note">
+    <h2>{{ note.title | titlecase }}</h2>
+    <p>{{ note.content }}</p>
+</div>
+
