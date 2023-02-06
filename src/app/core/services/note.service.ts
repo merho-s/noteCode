@@ -11,35 +11,30 @@ export class NoteService {
     constructor(private http: HttpClient) {}
 
     getAllNotes(): Observable<Note[]> {
-        return this.http.get<Note[]>('http://localhost:3000/notes');
+        return this.http.get<Note[]>('https://localhost:7287/api/v1/notes/testget');
     }
 
     getNoteById(id: number): Observable<Note> {
-        return this.http.get<Note>(`http://localhost:3000/notes/${id}`);
+        return this.http.get<Note>(`https://localhost:7287/api/v1/notes/${id}`);
     }
 
     addNote(note: Note): Observable<Note> {
-        return this.getAllNotes().pipe(
-            map(notes => notes.sort((a,b) => a.id - b.id)),
-            map(sortedNotes => sortedNotes[sortedNotes.length - 1]),
-            map(previousNote => ({
-                ...note,
-                id: previousNote.id + 1
-            })),
-            switchMap(newNote => this.http.post<Note>('http://localhost:3000/notes', newNote))
-        )
+        return this.http.post<Note>('https://localhost:7287/api/v1/notes', note);
+    }
+
+    getAllNotesByUser(): Observable<Note[]> {
+        return this.http.get<Note[]>('https://localhost:7287/api/v1/notes');
     }
 
     updateNote(updatedNote: Note, id: number): Observable<Note> {
         return this.getNoteById(id).pipe(
-            map(note => note = updatedNote),
-            switchMap(noteWithUpdate => this.http.put<Note>(`http://localhost:3000/notes/${id}`, noteWithUpdate))
+            switchMap(() => this.http.put<Note>(`http://localhost:3000/notes/${id}`, updatedNote))
         )
     }
 
     deleteNote(id: number): Observable<Note> {
         return this.getNoteById(id).pipe(
-            switchMap(noteToDelete => this.http.delete<Note>(`http://localhost:3000/notes/${id}`))
+            switchMap(() => this.http.delete<Note>(`http://localhost:3000/notes/${id}`))
         )
     }
 }

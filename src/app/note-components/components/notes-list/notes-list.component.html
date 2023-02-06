@@ -1,5 +1,4 @@
-<div class="notes-menu">
-    <nav>
-        <app-note-thumbnail *ngFor="let note of notes$ | async" [note]="note"></app-note-thumbnail>
-    </nav>
-</div>
+<nav>
+    <app-note-thumbnail *ngFor="let note of notes$ | async" [note]="note"></app-note-thumbnail>
+</nav>
+

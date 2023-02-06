@@ -1,3 +1,15 @@
 .note-display {
-    display:table-column;
+    width: 100%;
+}
+
+.main-card {
+    width: 69%;
+    float: right;
+    background-color: lightgrey;
+    height: 500px;
+}
+
+.nav-menu {
+    width: 29%;
+    float: left;
 }

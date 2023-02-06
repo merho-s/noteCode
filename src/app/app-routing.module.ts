@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NoteComponentsModule } from './note-components/note-components.module';
+import { LoginComponent } from './core/components/login/login.component';
 
 const routes: Routes = [
-  { path: '' },
+  { path: '', component: LoginComponent },
   { path: 'notes', loadChildren: () => import('./note-components/note-components.module').then(m => m.NoteComponentsModule) }
-  // { path: '', component: LandingPageComponent }
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 import { Tag } from "./tag.model";
+import { User } from "./user.model";
 
 export class Note {
     id!: number;
@@ -7,5 +8,5 @@ export class Note {
     image?: string;
     code?: string;
     tags?: Tag[];
-    userId!: number;
+    user!: User;
 }

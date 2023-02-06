@@ -15,5 +15,5 @@ export class NotesListComponent {
 
   ngOnInit() {
     this.notes$ = this.noteService.getAllNotes();
-   }
+  }
 }
