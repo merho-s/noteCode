@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 
@@ -7,14 +7,24 @@ import { Observable, tap } from 'rxjs';
 })
 
 export class AuthService {
-    private token!: string;
+    token!: string;
+    
 
-    constructor (private http: HttpClient) {}
+    constructor (private http: HttpClient) {
+    }
 
-    login(user: {username: string, password: string}) : Observable<string> {
-        return this.http.post<string>('https://localhost:7287/api/v1/login', user).pipe(
-            tap(token => this.token = token),
-            tap(() => console.log(this.token))
+    login(username: string, password: string) : Observable<string> {
+        const headers = new HttpHeaders({
+            'Content-Type': 'multipart/form-data',
+        });
+        
+        const params = new HttpParams()
+            .set('username', username)
+            .set('password', password);
+
+        return this.http.post('https://localhost:7287/api/v1/login/', params, {headers, responseType: "text"}).pipe(
+            tap((token) => localStorage.setItem("token", token)),
+            tap(() => console.log(localStorage.getItem("token")))
         );
     }
 }

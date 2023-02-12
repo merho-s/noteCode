@@ -10,6 +10,7 @@ import { Note } from 'src/app/core/models/note.model';
 export class NoteThumbnailComponent implements OnInit {
   @Input() note!: Note;
 
+
   constructor(private router: Router) {}
 
   ngOnInit() {
@@ -17,6 +18,7 @@ export class NoteThumbnailComponent implements OnInit {
   }
 
   onViewNote() {
+    console.log(this.note);
     this.router.navigateByUrl(`/notes/${this.note.id}`);
   }
 

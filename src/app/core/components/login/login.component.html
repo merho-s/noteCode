@@ -1,1 +1,14 @@
-<p>login works!</p>
+<div class ="login-card">
+    <h2>Connexion</h2>
+    <form [formGroup]="loginForm">
+        <div class="input-form">
+            <label for="username">Nom d'utilisateur</label>
+            <input id="username" type="text" formControlName="username">
+        </div>
+        <div class="input-form">
+            <label for="password">Mot de passe</label>
+            <input id="password" type="text" formControlName="password">
+        </div>
+        <button type ="submit" (click)="onSubmitForm()" [disabled]="loginForm.invalid">Se connecter</button>
+    </form>
+</div>

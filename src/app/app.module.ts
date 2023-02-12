@@ -17,7 +17,7 @@ import { NoteComponentsModule } from './note-components/note-components.module';
     CoreModule,
     NoteComponentsModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

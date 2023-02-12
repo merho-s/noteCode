@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Note } from 'src/app/core/models/note.model';
 import { NoteService } from 'src/app/core/services/note.service';

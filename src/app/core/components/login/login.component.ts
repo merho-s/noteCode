@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { NonNullAssert } from '@angular/compiler';
+import { tap } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +13,8 @@ import { NonNullAssert } from '@angular/compiler';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
+  token!: string;
+
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -18,16 +22,16 @@ export class LoginComponent {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: [null, [Validators.required]],
-      password: [null, [Validators.required]]
+      username: [null, Validators.required],
+      password: [null, Validators.required]
     })
   }
 
   onSubmitForm() {
-    
-    if (this.authService.login({this.loginForm.value.username, this.loginForm.value.password} !== null))
-    {
-      this.router.navigateByUrl('/notes');
-    }
+    this.authService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe();
+    this.router.navigateByUrl('notes');
   }
+
+    
+  
 }
