@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http'
 import { Note } from '../models/note.model';
 import { Observable, map, switchMap } from 'rxjs'
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -11,19 +12,19 @@ export class NoteService {
     constructor(private http: HttpClient) {}
 
     getAllNotes(): Observable<Note[]> {
-        return this.http.get<Note[]>('https://localhost:7287/api/v1/notes/testget');
+        return this.http.get<Note[]>(`${environment.apiUrlNote}/testget`);
     }
 
     getNoteById(id: number): Observable<Note> {
-        return this.http.get<Note>(`https://localhost:7287/api/v1/notes/${id}`);
+        return this.http.get<Note>(`${environment.apiUrlNote}/${id}`);
     }
 
     addNote(note: Note): Observable<Note> {
-        return this.http.post<Note>('https://localhost:7287/api/v1/notes', note);
+        return this.http.post<Note>(environment.apiUrlNote, note);
     }
 
     getAllNotesByUser(): Observable<Note[]> {
-        return this.http.get<Note[]>('https://localhost:7287/api/v1/notes');
+        return this.http.get<Note[]>(environment.apiUrlNote);
     }
 
     updateNote(updatedNote: Note, id: number): Observable<Note> {

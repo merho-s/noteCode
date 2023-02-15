@@ -1,12 +1,12 @@
-import { Tag } from "./tag.model";
+import { Codetag } from "./codetag.model";
 import { User } from "./user.model";
 
 export class Note {
     id!: number;
     title!: string;
-    content!: string;
+    description!: string;
     image?: string;
     code?: string;
-    tags?: Tag[];
+    tags?: Codetag[];
     user!: User;
 }

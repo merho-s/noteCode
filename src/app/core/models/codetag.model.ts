@@ -1,4 +1,4 @@
-export class Tag {
+export class Codetag {
     id!: number;
     name!: string;
 }
