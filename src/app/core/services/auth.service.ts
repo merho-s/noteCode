@@ -14,19 +14,22 @@ export class AuthService {
     constructor (private http: HttpClient) {
     }
 
-    login(username: string, password: string) : Observable<string> {
-        const headers = new HttpHeaders({
+    login(username: string, password: string) {
+        const options = {
+            headers: new HttpHeaders({
             'Content-Type': 'multipart/form-data',
-        });
+        })
+        };
         
         const params = new HttpParams()
             .set('username', username)
             .set('password', password);
 
-        return this.http.post(environment.apiUrlUser, params, {headers, responseType: "text"}).pipe(
-            tap((token) => localStorage.setItem("token", token)),
-            tap(() => console.log(localStorage.getItem("token")))
-        );
+        const formData = new FormData();
+        formData.append('username', username);
+        formData.append('password', password);
+
+        return this.http.post(`https://localhost:7287/api/v1/user/login`, formData);
     }
 
     logout() : Observable<any> {

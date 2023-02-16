@@ -28,8 +28,10 @@ export class LoginComponent {
   }
 
   onSubmitForm() {
-    this.authService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe();
-    this.router.navigateByUrl('notes');
+    this.authService.login(this.loginForm.value.username, this.loginForm.value.password).pipe(
+      tap((data) => console.log(data)),
+      tap((error) => console.log(error))
+    ).subscribe();
   }
 
     

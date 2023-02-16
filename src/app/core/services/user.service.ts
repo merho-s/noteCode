@@ -5,6 +5,10 @@ export class UserService {
 
     constructor(private http: HttpClient) {}
 
+    // getLoggedUser(): User {
+        
+    // }
+    
     
 
 }
