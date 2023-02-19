@@ -1,0 +1,14 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "Note 1",
+      "content": "Description note 1"
+    },
+    {
+      "id": 2,
+      "title": "Note 2",
+      "content": "Description note 2"
+    }
+  ]
+}

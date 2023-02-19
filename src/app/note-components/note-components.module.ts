@@ -5,6 +5,7 @@ import { NoteThumbnailComponent } from './components/note-thumbnail/note-thumbna
 import { SingleNoteComponent } from './components/single-note/single-note.component';
 import { RouterModule } from '@angular/router';
 import { NoteComponentsRoutingModule } from './note-components-routing.module';
+import { AddNoteComponent } from './components/add-note/add-note.component';
 
 
 
@@ -12,7 +13,8 @@ import { NoteComponentsRoutingModule } from './note-components-routing.module';
   declarations: [
     NotesListComponent,
     NoteThumbnailComponent,
-    SingleNoteComponent
+    SingleNoteComponent,
+    AddNoteComponent
   ],
   imports: [
     CommonModule,
