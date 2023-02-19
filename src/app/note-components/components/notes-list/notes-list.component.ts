@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Note } from 'src/app/core/models/note.model';
 import { NoteService } from 'src/app/core/services/note.service';
@@ -11,9 +12,13 @@ import { NoteService } from 'src/app/core/services/note.service';
 export class NotesListComponent implements OnInit {
   notes$!: Observable<Note[]>;
 
-  constructor(private noteService: NoteService) {}
+  constructor(private noteService: NoteService, private router: Router) {}
 
   ngOnInit() {
     this.notes$ = this.noteService.getAllNotesByUser();
+  }
+
+  onAddNote() {
+    this.router.navigateByUrl('addnote')
   }
 }
