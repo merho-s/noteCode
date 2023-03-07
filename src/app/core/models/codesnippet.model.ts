@@ -1,5 +1,5 @@
 export class CodeSnippet {
     id!: number;
-    codetext!: string;
+    code!: string;
     description!: string;
 } 

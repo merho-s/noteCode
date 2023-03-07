@@ -1,6 +1,6 @@
 <div class="single-note" *ngIf="note$ | async as note">
     <h2>{{ note.title | titlecase }}</h2>
     <p>{{ note.description }}</p>
-    <code *ngFor="let code of {{ note.codes }} | async" [CodeSnippet]="code"></code>
+    <pre [ngClass]="'language-javascript'" *ngFor="let singleCode of note.codes">{{ singleCode.code }}</pre>
 </div>
 

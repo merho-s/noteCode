@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Note } from 'src/app/core/models/note.model';
 import { NoteService } from 'src/app/core/services/note.service';
 import { Observable } from 'rxjs';
+import 'prismjs';
 
 @Component({
   selector: 'app-single-note',
