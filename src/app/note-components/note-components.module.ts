@@ -6,6 +6,7 @@ import { SingleNoteComponent } from './components/single-note/single-note.compon
 import { RouterModule } from '@angular/router';
 import { NoteComponentsRoutingModule } from './note-components-routing.module';
 import { AddNoteComponent } from './components/add-note/add-note.component';
+import { HighlightService } from '../core/services/highlight.service';
 
 
 
@@ -24,6 +25,9 @@ import { AddNoteComponent } from './components/add-note/add-note.component';
   exports: [
     NotesListComponent,
     NoteThumbnailComponent
+  ],
+  providers: [
+    HighlightService
   ]
 })
 export class NoteComponentsModule { }
