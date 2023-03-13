@@ -9,7 +9,8 @@ import { CodeSnippet } from 'src/app/core/models/codesnippet.model';
 })
 export class AddCodeComponent implements OnInit {
   codeForm!: FormGroup;
-  @Input() codes!: CodeSnippet[];
+  codeNumbers: number = 1;
+  codes!: CodeSnippet[];
   @Output() newCode = new EventEmitter<CodeSnippet[]>();
 
   constructor(private formBuilder: FormBuilder) {}
@@ -22,16 +23,12 @@ export class AddCodeComponent implements OnInit {
     })
   }
  
-
   onAddSingleCode(): void {
     this.codes.push(this.codeForm.value);
+    this.codeNumbers++;
   }
 
   onAddAllCodes(): void {
-    // if (this.codeForm.invalid) {
-    //   return;
-    // }
     this.newCode.emit(this.codes);
-    // this.codeForm.reset();
   }
 }

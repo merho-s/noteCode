@@ -8,9 +8,7 @@
             <label for="description">Deescription</label>
             <input id="description" type="text" formControlName="description">
         </div>
-        <button (click)="addCodeEvent()">+</button>
-        <app-add-code *ngFor="let code of newNote.codes">
-        
-        <button type="submit" (click)="onSubmitForm()" [disabled]="noteForm.invalid">Enregistrer</button>
+        <app-add-code></app-add-code>
+        <button type="submit" (newCode)="onSubmitForm($event)" [disabled]="noteForm.invalid">Enregistrer</button>
     </form>
 </div>

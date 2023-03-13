@@ -14,7 +14,7 @@ import { NoteService } from 'src/app/core/services/note.service';
 export class AddNoteComponent implements OnInit {
   noteForm!: FormGroup;
   codeForm!: FormGroup;
-  @Input() newNote!: Note;
+  // @Input() newNote!: Note;
   @Input() newCode!: CodeSnippet;
 
   constructor(private formBuilder: FormBuilder,
@@ -24,19 +24,19 @@ export class AddNoteComponent implements OnInit {
   ngOnInit(): void {
     this.noteForm = this.formBuilder.group({
       title: [null],
-      description: [null],
-      // codes: this.codeForm.value
+      description: [null, [Validators.required]],
+      tags: [null]
     });
     
   }
 
-  onSubmitForm() {
-    this.noteService.addNote(this.noteForm.value).pipe(
+  onSubmitForm(codes: CodeSnippet[]) {
+    let newNote: Note = {
+      ...this.noteForm.value,
+      codes: codes
+    }
+    this.noteService.addNote(newNote).pipe(
       tap(() => this.router.navigateByUrl('/notes'))
     ).subscribe();
-  }
-
-  addCodeEvent() {
-    this.newNote.codes?.push(this.newCode);
   }
 }
