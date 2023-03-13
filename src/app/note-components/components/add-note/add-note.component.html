@@ -1,1 +1,16 @@
-<p>add-note works!</p>
+<div class="form-card">
+    <form [formGroup]="noteForm">
+        <div class="note-form">
+            <label for="title">Titre</label>
+            <input id="title" type="text" formControlName="title">
+        </div>
+        <div class="note-form">
+            <label for="description">Deescription</label>
+            <input id="description" type="text" formControlName="description">
+        </div>
+        <button (click)="addCodeEvent()">+</button>
+        <app-add-code *ngFor="let code of newNote.codes">
+        
+        <button type="submit" (click)="onSubmitForm()" [disabled]="noteForm.invalid">Enregistrer</button>
+    </form>
+</div>

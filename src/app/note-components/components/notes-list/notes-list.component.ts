@@ -19,6 +19,6 @@ export class NotesListComponent implements OnInit {
   }
 
   onAddNote() {
-    this.router.navigateByUrl('addnote');
+    this.router.navigateByUrl('notes/addnote');
   }
 }

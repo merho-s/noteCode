@@ -1,6 +1,5 @@
 export class CodeSnippet {
-    id!: number;
     code!: string;
-    description!: string;
+    description!: string | null;
     language!: string;
 } 

@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { NoteComponentsRoutingModule } from './note-components-routing.module';
 import { AddNoteComponent } from './components/add-note/add-note.component';
 import { HighlightService } from '../core/services/highlight.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddCodeComponent } from './components/add-code/add-code.component';
 
 
 
@@ -15,12 +17,14 @@ import { HighlightService } from '../core/services/highlight.service';
     NotesListComponent,
     NoteThumbnailComponent,
     SingleNoteComponent,
-    AddNoteComponent
+    AddNoteComponent,
+    AddCodeComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    NoteComponentsRoutingModule
+    NoteComponentsRoutingModule,
+    ReactiveFormsModule
   ],
   exports: [
     NotesListComponent,

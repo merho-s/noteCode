@@ -1,0 +1,15 @@
+<form *ngFor="let code of codes" [formGroup]="codeForm">
+    <div class="code-form">
+        <label for="code">Code</label>
+        <input id="code" type="pre" formControlName="code">
+    </div>
+    <div class="code-form">
+        <label for="description">Description</label>
+        <input id="description" type="text" formControlName="description">
+    </div>
+    <div class="code-form">
+        <label for="language">Langage</label>
+        <input id="language" type="text" formControlName="language">
+    </div>
+    <button type="submit" (click)="onAddSingleCode()" [disabled]="codeForm.invalid">Enregistrer</button>
+</form>

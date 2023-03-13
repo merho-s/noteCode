@@ -2,7 +2,7 @@
     <h2>{{ note.title | titlecase }}</h2>
     <p>{{ note.description }}</p>
     <div *ngFor="let singleCode of note.codes">
-        <pre class="language-typescript"><code>{{ singleCode.code }}</code></pre>
+        <pre [ngClass]="'language-' + singleCode.language"><code>{{ singleCode.code }}</code></pre>
         <p>{{ singleCode.description }}</p>
     </div>
     
