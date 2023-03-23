@@ -1,4 +1,5 @@
-<form *ngFor="let item of [].constructor(codeNumbers)" [formGroup]="codeForm">
+<!-- <form *ngFor="let item of [].constructor(codeNumbers)" [formGroup]="codeForm"> -->
+<div [formGroup]="codeForm">
     <div class="code-form">
         <label for="code">Code</label>
         <input id="code" type="pre" formControlName="code">
@@ -11,6 +12,6 @@
         <label for="language">Langage</label>
         <input id="language" type="text" formControlName="language">
     </div>
-    <button type="submit" (click)="onAddSingleCode()" [disabled]="codeForm.invalid">Enregistrer</button>
-</form>
-<button (click)="onAddAllCodes()">Valider codes</button>
+    <!-- <button type="submit" (click)="onAddSingleCode()" [disabled]="codeForm.invalid">Enregistrer</button> -->
+</div>
+<!-- <button (click)="onAddAllCodes()">Valider codes</button> -->

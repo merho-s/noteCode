@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CodeSnippet } from 'src/app/core/models/codesnippet.model';
 
 @Component({
@@ -17,9 +17,9 @@ export class AddCodeComponent implements OnInit {
 
   ngOnInit(): void {
     this.codeForm = this.formBuilder.group({
-      code: [null, [Validators.required]],
-      description: [null],
-      language: [null, [Validators.required]]
+      code: new FormControl('', Validators.required),
+      description: new FormControl(''),
+      language: new FormControl('', Validators.required)
     })
   }
  

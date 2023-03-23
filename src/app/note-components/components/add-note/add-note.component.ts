@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { CodeSnippet } from 'src/app/core/models/codesnippet.model';
@@ -14,7 +14,10 @@ import { NoteService } from 'src/app/core/services/note.service';
 export class AddNoteComponent implements OnInit {
   noteForm!: FormGroup;
   codeForm!: FormGroup;
-  // @Input() newNote!: Note;
+  tagForm!: FormGroup;
+  codeFormArray!: FormArray;
+  tagFormArray!: FormArray;
+  
   @Input() newCode!: CodeSnippet;
 
   constructor(private formBuilder: FormBuilder,
@@ -23,17 +26,32 @@ export class AddNoteComponent implements OnInit {
 
   ngOnInit(): void {
     this.noteForm = this.formBuilder.group({
-      title: [null],
-      description: [null, [Validators.required]],
-      tags: [null]
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      tags: this.tagFormArray,
+      codes: this.codeFormArray
     });
-    
   }
 
-  onSubmitForm(codes: CodeSnippet[]) {
+  addCode() {
+    this.codeForm = this.formBuilder.group({
+      code: ['', Validators.required],
+      description: [''],
+      language: ['', Validators.required]
+    })
+    this.codeFormArray.push(this.codeForm.value);
+  }
+
+  addTag() {
+    this.tagForm = this.formBuilder.group({
+      name: ['', Validators.required]
+    })
+    this.tagFormArray.push(this.tagForm.value);
+  }
+
+  onSubmitForm() {
     let newNote: Note = {
       ...this.noteForm.value,
-      codes: codes
     }
     this.noteService.addNote(newNote).pipe(
       tap(() => this.router.navigateByUrl('/notes'))

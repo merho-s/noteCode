@@ -1,14 +1,26 @@
 <div class="form-card">
     <form [formGroup]="noteForm">
-        <div class="note-form">
-            <label for="title">Titre</label>
-            <input id="title" type="text" formControlName="title">
+        <label for="title">Titre</label>
+        <input id="title" type="text" formControlName="title">
+        <label for="description">Description</label>
+        <input id="description" type="text" formControlName="description">
+        <div *ngFor="let codeForm of codeFormArray.controls">
+            <form [formGroup]="codeForm">
+                <div class="code-form">
+                    <label for="code">Code</label>
+                    <input id="code" type="pre" formControlName="code">
+                </div>
+                <div class="code-form">
+                    <label for="description">Description</label>
+                    <input id="description" type="text" formControlName="description">
+                </div>
+                <div class="code-form">
+                    <label for="language">Langage</label>
+                    <input id="language" type="text" formControlName="language">
+                </div>
+                <button type="submit" (click)="addCode()" [disabled]="codeForm.invalid">Enregistrer</button>
+            </form>
         </div>
-        <div class="note-form">
-            <label for="description">Deescription</label>
-            <input id="description" type="text" formControlName="description">
-        </div>
-        <app-add-code></app-add-code>
-        <button type="submit" (newCode)="onSubmitForm($event)" [disabled]="noteForm.invalid">Enregistrer</button>
+        <button type="submit" (newCode)="onSubmitForm()" [disabled]="noteForm.invalid">Enregistrer</button>
     </form>
 </div>
