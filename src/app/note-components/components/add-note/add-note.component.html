@@ -1,26 +1,47 @@
 <div class="form-card">
     <form [formGroup]="noteForm">
-        <label for="title">Titre</label>
-        <input id="title" type="text" formControlName="title">
-        <label for="description">Description</label>
-        <input id="description" type="text" formControlName="description">
-        <div *ngFor="let codeForm of codeFormArray.controls">
-            <form [formGroup]="codeForm">
-                <div class="code-form">
-                    <label for="code">Code</label>
-                    <input id="code" type="pre" formControlName="code">
-                </div>
-                <div class="code-form">
-                    <label for="description">Description</label>
-                    <input id="description" type="text" formControlName="description">
-                </div>
-                <div class="code-form">
-                    <label for="language">Langage</label>
-                    <input id="language" type="text" formControlName="language">
-                </div>
-                <button type="submit" (click)="addCode()" [disabled]="codeForm.invalid">Enregistrer</button>
-            </form>
+        <div class="form-item">
+            <label for="title">Titre</label>
+            <input id="title" type="text" formControlName="title">
         </div>
-        <button type="submit" (newCode)="onSubmitForm()" [disabled]="noteForm.invalid">Enregistrer</button>
+        <div class="form-item">
+            <label for="description">Description</label>
+            <input id="description" type="text" formControlName="description">
+        </div>
+        <div formArrayName="tags">
+            <div *ngFor="let tagForm of tags.controls; let i = index">
+                <div [formGroupName]="i">
+                    <div class="code-form">
+                        <label for="tag">Tag</label>
+                        <input id="tag" type="text" formControlName="name">
+                    </div>
+                </div>
+            </div>
+            <button (click)="onAddTag()">
+                Ajouter tag
+            </button>
+        </div>
+        <div formArrayName="codes">
+            <div *ngFor="let codeForm of codes.controls; let i = index">
+                <div [formGroupName]="i">
+                    <div class="code-form">
+                        <label for="code">Code</label>
+                        <textarea id="code" formControlName="code"></textarea>
+                    </div>
+                    <div class="code-form">
+                        <label for="description">Description</label>
+                        <input id="description" type="text" formControlName="description">
+                    </div>
+                    <div class="code-form">
+                        <label for="language">Langage</label>
+                        <input id="language" type="text" formControlName="language">
+                    </div>
+                </div>
+            </div>
+            <button (click)="onAddCode()">
+                Ajouter code
+            </button>
+        </div>
+        <button type="submit" (click)="onSubmitForm()" [disabled]="noteForm.invalid">Enregistrer</button>
     </form>
 </div>

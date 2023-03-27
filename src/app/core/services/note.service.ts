@@ -20,7 +20,13 @@ export class NoteService {
     }
 
     addNote(note: Note): Observable<Note> {
-        return this.http.post<Note>(environment.apiUrlNote, note);
+        // return this.http.post<Note>(environment.apiUrlNote, {
+        //     title: note.title,
+        //     description: note.description,
+        //     codes: note.codes,
+        //     tags: note.tags,
+        // });
+        return this.http.post<Note>(environment.apiUrlNote, note)
     }
 
     getAllNotesByUser(): Observable<Note[]> {

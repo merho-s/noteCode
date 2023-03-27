@@ -13,10 +13,6 @@ import { NoteService } from 'src/app/core/services/note.service';
 })
 export class AddNoteComponent implements OnInit {
   noteForm!: FormGroup;
-  codeForm!: FormGroup;
-  tagForm!: FormGroup;
-  codeFormArray!: FormArray;
-  tagFormArray!: FormArray;
   
   @Input() newCode!: CodeSnippet;
 
@@ -24,36 +20,47 @@ export class AddNoteComponent implements OnInit {
               private router: Router,
               private noteService: NoteService) {}
 
+  get codes() {
+    return this.noteForm.get('codes') as FormArray;
+  }
+
+  get tags() {
+    return this.noteForm.get('tags') as FormArray;
+  }
+
   ngOnInit(): void {
     this.noteForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      tags: this.tagFormArray,
-      codes: this.codeFormArray
+      tags: this.formBuilder.array([]),
+      codes: this.formBuilder.array([])
     });
   }
 
-  addCode() {
-    this.codeForm = this.formBuilder.group({
+  onAddCode() {
+    const codeForm = this.formBuilder.group({
       code: ['', Validators.required],
       description: [''],
       language: ['', Validators.required]
-    })
-    this.codeFormArray.push(this.codeForm.value);
+    });
+    this.codes.push(codeForm);
   }
 
-  addTag() {
-    this.tagForm = this.formBuilder.group({
+  onAddTag() {
+    const tagForm = this.formBuilder.group({
       name: ['', Validators.required]
-    })
-    this.tagFormArray.push(this.tagForm.value);
+    });
+    this.tags.push(tagForm);
   }
 
   onSubmitForm() {
-    let newNote: Note = {
-      ...this.noteForm.value,
-    }
-    this.noteService.addNote(newNote).pipe(
+    // const newNote = {
+    //   title: this.noteForm.value.title,
+    //   description: this.noteForm.value.title,
+    //   tags: 
+    // }
+    console.log(this.noteForm.value);
+    this.noteService.addNote(this.noteForm.value).pipe(
       tap(() => this.router.navigateByUrl('/notes'))
     ).subscribe();
   }
