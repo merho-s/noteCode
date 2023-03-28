@@ -9,6 +9,7 @@ import { AddNoteComponent } from './components/add-note/add-note.component';
 import { HighlightService } from '../core/services/highlight.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddCodeComponent } from './components/add-code/add-code.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -24,7 +25,8 @@ import { AddCodeComponent } from './components/add-code/add-code.component';
     CommonModule,
     RouterModule,
     NoteComponentsRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   exports: [
     NotesListComponent,
