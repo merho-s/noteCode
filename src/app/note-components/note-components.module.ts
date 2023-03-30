@@ -10,6 +10,7 @@ import { HighlightService } from '../core/services/highlight.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddCodeComponent } from './components/add-code/add-code.component';
 import { SharedModule } from '../shared/shared.module';
+import { TestFormarrayComponent } from './components/test-formarray/test-formarray.component';
 
 
 
@@ -19,13 +20,12 @@ import { SharedModule } from '../shared/shared.module';
     NoteThumbnailComponent,
     SingleNoteComponent,
     AddNoteComponent,
-    AddCodeComponent
+    AddCodeComponent,
+    TestFormarrayComponent
   ],
   imports: [
-    CommonModule,
     RouterModule,
     NoteComponentsRoutingModule,
-    ReactiveFormsModule,
     SharedModule
   ],
   exports: [

@@ -11,6 +11,6 @@
             {{ note.content }}
         </a>
     </ng-template> -->
-    <button (click)="onViewNote()">{{ note.title | uppercase }}</button>
+    <a routerLink="/notes/{{note.id}}">{{ note.title | uppercase }}</a>
 </div>
          

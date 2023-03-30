@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
@@ -16,7 +15,6 @@ import { SharedModule } from '../shared/shared.module';
     LoginComponent
   ],
   imports: [
-    CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
     SharedModule
