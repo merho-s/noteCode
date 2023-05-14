@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NoteComponentsModule } from './note-components/note-components.module';
 import { LoginComponent } from './core/components/login/login.component';
+import { LoginMaterialComponent } from './core/login-material/login-material.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },

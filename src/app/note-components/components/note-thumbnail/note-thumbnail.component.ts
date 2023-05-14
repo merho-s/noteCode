@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Note } from 'src/app/core/models/note.model';
 
@@ -7,15 +7,10 @@ import { Note } from 'src/app/core/models/note.model';
   templateUrl: './note-thumbnail.component.html',
   styleUrls: ['./note-thumbnail.component.scss']
 })
-export class NoteThumbnailComponent implements OnInit {
+export class NoteThumbnailComponent {
   @Input() note!: Note;
 
-
   constructor(private router: Router) {}
-
-  ngOnInit() {
-
-  }
 
   onViewNote() {
     console.log(this.note);

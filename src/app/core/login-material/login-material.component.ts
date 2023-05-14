@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { NonNullAssert } from '@angular/compiler';
-import { tap } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from '../services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-login-material',
+  templateUrl: './login-material.component.html',
+  styleUrls: ['./login-material.component.scss']
 })
-export class LoginComponent {
+export class LoginMaterialComponent {
+
   loginForm!: FormGroup;
   token!: string;
 
@@ -29,10 +27,7 @@ export class LoginComponent {
 
   onSubmitForm() {
     this.authService.login(this.loginForm.value.username, this.loginForm.value.password).pipe(
-      tap(() => this.router.navigateByUrl('notes'))
+      // tap(() => this.router.navigateByUrl('notes'))
     ).subscribe();
   }
-
-    
-  
 }

@@ -1,16 +1,8 @@
-.note-display {
-    width: 100%;
+.notecode-body {
+    display: flex;
+    flex-direction: row;
 }
 
-.main-card {
-    width: 69%;
-    float: right;
-    background-color: lightgrey;
-    height: 500px;
-}
-
-.notes-nav-menu {
-    width: 200px;
-    float: left;
-    height: max;
+.router-outler {
+    margin: 100px;
 }

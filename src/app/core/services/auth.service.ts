@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, tap } from 'rxjs';
+import { BehaviorSubject, Observable, map, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { TokenInfos } from '../models/token.model';
 
@@ -14,15 +14,6 @@ export class AuthService {
     }
 
     login(username: string, password: string) {
-        // const options = {
-        //     headers: new HttpHeaders({
-        //     'Content-Type': 'multipart/form-data',
-        // })
-        // };
-        
-        // const params = new HttpParams()
-        //     .set('username', username)
-        //     .set('password', password);
 
         const formData = new FormData();
         formData.append('username', username);
@@ -40,4 +31,12 @@ export class AuthService {
     logout() {
         return this.http.post(environment.apiUrlUser, null);
     } 
+
+    isLogged(): boolean {
+        const exp = localStorage.getItem('expirationDate');
+        if(exp !== null) {
+            return Date.parse(exp) < Date.now();
+        }
+        return false;
+    }
 }
