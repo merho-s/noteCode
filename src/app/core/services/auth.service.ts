@@ -9,6 +9,8 @@ import { TokenInfos } from '../models/token.model';
 })
 
 export class AuthService {
+    isLoggedIn$!: BehaviorSubject<boolean>; 
+    isLoggedIn!: boolean;
     
     constructor (private http: HttpClient) {
     }
@@ -35,8 +37,14 @@ export class AuthService {
     isLogged(): boolean {
         const exp = localStorage.getItem('expirationDate');
         if(exp !== null) {
-            return Date.parse(exp) < Date.now();
+            const res = Date.parse(exp) > Date.now();
+            // this.isLoggedIn$.next(res);
+            // this.isLoggedIn = res;
+            return res;
+        }else {
+            // this.isLoggedIn$.next(false);
+            // this.isLoggedIn = false;
+            return false;
         }
-        return false;
     }
 }

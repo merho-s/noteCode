@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './core/services/auth.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,15 @@ import { AuthService } from './core/services/auth.service';
 })
 
 export class AppComponent {
+  isLoggedIn$!: BehaviorSubject<boolean>;
+
   title = 'noteCode';
 
   constructor(private authService: AuthService) {}
+
+  ngOnInit() {
+    this.isLoggedIn$ = this.authService.isLoggedIn$;
+  }
 
   
 }

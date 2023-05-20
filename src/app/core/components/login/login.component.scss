@@ -1,0 +1,22 @@
+.login-card {
+    border-radius: 5px;
+    box-shadow: lightgrey 4px 10px 20px;
+    width: 400px;
+    padding: 20px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    
+    margin-top: 40px;
+}

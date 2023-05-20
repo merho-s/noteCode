@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AddCodeComponent } from './components/add-code/add-code.component';
 import { SharedModule } from '../shared/shared.module';
 import { TestFormarrayComponent } from './components/test-formarray/test-formarray.component';
+import { NotesHomeComponent } from './components/notes-home/notes-home.component';
 
 
 
@@ -21,7 +22,8 @@ import { TestFormarrayComponent } from './components/test-formarray/test-formarr
     SingleNoteComponent,
     AddNoteComponent,
     AddCodeComponent,
-    TestFormarrayComponent
+    TestFormarrayComponent,
+    NotesHomeComponent
   ],
   imports: [
     RouterModule,

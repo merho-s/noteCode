@@ -1,4 +1,24 @@
 nav {
-    width: 25%;
+    padding: 5px;
+    background-color: rgb(232, 232, 233);
     box-shadow: lightgrey 4px 10px 20px;
+}
+
+.add-note-btn {
+    display: flex;
+    height: 50px;
+    font-size: small;
+    border: solid 1px;
+    border-color:rgb(136, 136, 137);
+    border-radius: 5px;
+    align-items: center;
+    margin: auto;
+    i {
+        margin-right: 10px;
+    }
+}
+
+.add-note-btn:hover {
+    background-color: lightgrey;
+    cursor: pointer;
 }
