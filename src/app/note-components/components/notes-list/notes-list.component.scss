@@ -9,22 +9,19 @@
 
 .add-note-btn {
     display: flex;
+    justify-content: space-between;
     height: 30px;
     margin-bottom: 15px;
-    width: 100%;
-    font-size: small;
-    box-shadow: lightgrey 4px 10px 20px;
-    border-radius: 5px;
     align-items: center;
+    p {
+        font-weight: bold;
+    }
+    i {
+        font-size: xx-large;
+    }
+    i:hover {
+        cursor: pointer;
+    }
 }
 
-.add-note-btn:hover {
-    background-color: black;
-    color: white;
-    cursor: pointer;
-}
 
-.note-thumbnail-active {
-    background-color: black;
-    color: white;
-}

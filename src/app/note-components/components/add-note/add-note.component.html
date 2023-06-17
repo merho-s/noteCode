@@ -1,46 +1,39 @@
 <div class="form-card">
     <form [formGroup]="noteForm">
-        <div class="form-item">
-            <label for="title">Titre</label>
-            <input id="title" type="text" formControlName="title">
-        </div>
-        <div class="form-item">
-            <label for="description">Description</label>
-            <input id="description" type="text" formControlName="description">
-        </div>
-        <div formArrayName="tags">
-            <div *ngFor="let tagForm of tags.controls; let i = index">
-                <div [formGroupName]="i">
-                    <div class="code-form">
-                        <label for="tag">Tag</label>
-                        <input id="tag" type="text" formControlName="name">
-                    </div>
-                </div>
+        <input id="title" type="text" placeholder="Write your title..." formControlName="title">
+        <div id="tags-section" formArrayName="tags">
+            <div class="section-title">
+                Tags 
             </div>
-            <button (click)="onAddTag()">
-                Ajouter tag
-            </button>
+            <div id="tags-flex">
+                <div class="single-tag" [formGroupName]="i" *ngFor="let tagForm of tags.controls; let i = index">
+                    <input type="text" placeholder="Tag" formControlName="name">
+                    <i class="bx bx-x" (click)="onDeleteTag(i)"></i>
+                </div>
+                <i class="bx bx-plus add-item-btn" (click)="onAddTag()"></i>
+            </div>
+
+            
         </div>
-        <div formArrayName="codes">
+        <div>
+            <div class="section-title">
+                Description
+            </div>
+            <textarea id="note-description" rows="4" placeholder="Write your note description..." formControlName="description"></textarea>
+        </div>
+  
+        <div id="codes-section" formArrayName="codes">
+            <div class="section-title">
+                Code snippets
+            </div>
             <div *ngFor="let codeForm of codes.controls; let i = index">
-                <div [formGroupName]="i">
-                    <div class="code-form">
-                        <label for="code">Code</label>
-                        <textarea id="code" formControlName="code"></textarea>
-                    </div>
-                    <div class="code-form">
-                        <label for="description">Description</label>
-                        <input id="description" type="text" formControlName="description">
-                    </div>
-                    <div class="code-form">
-                        <label for="language">Langage</label>
-                        <input id="language" type="text" formControlName="language">
-                    </div>
+                <div id="single-code" [formGroupName]="i">
+                    <textarea id="code-text" rows="4" placeholder="Write your code..." formControlName="code"></textarea>
+                    <input id="code-description" type="text" placeholder="Write your code description..." formControlName="description">
+                    <input id="language" type="text" placeholder="Write your code language..." formControlName="language">
                 </div>
             </div>
-            <button (click)="onAddCode()">
-                Ajouter code
-            </button>
+            <i class="bx bx-plus add-item-btn" (click)="onAddCode()"></i>
         </div>
         <button type="submit" (click)="onSubmitForm()" [disabled]="noteForm.invalid">Enregistrer</button>
     </form>

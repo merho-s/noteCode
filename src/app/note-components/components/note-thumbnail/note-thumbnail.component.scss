@@ -1,18 +1,25 @@
 .note-thumbnail {
     display: flex;
     align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
     height: 30px;
-    width: 100%;
     margin-bottom: 5px;
     border-radius: 5px;
     font-size: small;
+    i {
+        margin-right: 5px;
+    }
 }
 
 .note-thumbnail:hover {
-    background-color: rgb(71, 71, 71);
+    background-color: rgb(177, 176, 176);
     color: white;
     cursor: pointer;
 }
 
-
+.note-thumbnail-active {
+    background-color: black;
+    color: white;
+}
 

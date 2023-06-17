@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TagComponent } from './components/tag/tag.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    TagComponent
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -15,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    TagComponent
   ]
 })
 export class SharedModule { }

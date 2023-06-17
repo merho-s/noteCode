@@ -1,5 +1,5 @@
 <div class="single-note" *ngIf="note$ | async as note">
-    <h2>{{ note.title | titlecase }}</h2>
+    <h2>{{ note.title }}</h2>
     <p>{{ note.description }}</p>
     <app-code-card *ngFor="let singleCode of note.codes" [singleCode]="singleCode"></app-code-card>
 </div>

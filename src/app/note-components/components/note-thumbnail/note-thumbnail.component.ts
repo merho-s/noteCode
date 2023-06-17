@@ -11,30 +11,17 @@ import { Observable, filter, map, tap } from 'rxjs';
 export class NoteThumbnailComponent {
   @Input() note!: Note;
   isActive!: boolean;
-  noteRoute!: string;
-  currentRoute$!: Observable<boolean>;
-  currentRoute!: string;
   
   constructor(private router: Router) {}
 
-  ngOnInit() {
-    this.noteRoute = `/notes/${this.note.id}`;
-  }
-
   ngDoCheck() {
-    // this.router.events.pipe(
-    //   filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-    //   map((event: NavigationEnd) => this.isActive = this.noteRoute === event.url),
-    //   tap((value) => console.log(value))
-    // ).subscribe();
+    this.isActive = this.router.url === `/notes/${this.note.id}` ? true : false;
   }
-
 
   onViewNote() {
     this.router.navigate(['/'], {
       skipLocationChange: true
-    }).then(() => this.router.navigate([`/notes/${this.note.id}`]).then(() => this.currentRoute = this.router.url)
-    );
+    }).then(() => this.router.navigate([`/notes/${this.note.id}`]));
   }
 
 }

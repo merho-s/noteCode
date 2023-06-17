@@ -53,6 +53,10 @@ export class AddNoteComponent implements OnInit {
     this.tags.push(tagForm);
   }
 
+  onDeleteTag(id: number) {
+    this.tags.removeAt(id);
+  }
+
   onSubmitForm() {
     // const newNote = {
     //   title: this.noteForm.value.title,

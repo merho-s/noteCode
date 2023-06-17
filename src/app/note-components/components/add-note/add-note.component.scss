@@ -1,3 +1,102 @@
-#code {
+#title {
+    font-size: 30px;
+    font-weight: bold;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: small;
+    color: rgb(139, 139, 139);
+    margin: 0;
+    font-style: italic;
+    i:hover {
+        cursor: pointer;
+    }
+}
+
+.add-item-btn {
+    color: black;
+}
+
+.add-item-btn:hover {
+    cursor: pointer;
+}
+
+#tags-section {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    #tags-flex {
+        display: flex;
+        gap: 3px;
+        align-items: center;
+        .single-tag {
+            display: flex ;
+            align-items: center;
+            color: white;
+            width: 75px;
+            background-color: black;
+            height: 20px;
+            border-radius: 15px;
+            padding: 2px;
+            border: none;
+            font-size: small;
+            input {
+                border: none;
+                max-width: 70%;
+                background-color: inherit;
+                border-radius: inherit;
+                color: white;
+                text-align: center;
+            }
+            input:focus {
+                outline: none;
+            }
+            i {
+                color: white;
+            }
+            i:hover {
+                cursor:pointer;
+            }
+        }
+    }
+}
+
+#note-description {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
     resize: none;
 }
+
+#codes-section {
+    #single-code {
+        background-color: rgb(60, 60, 60);
+        padding: 5px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        #code-text {
+            background-color: rgb(30, 30, 30);
+            resize: none;
+            color: white;
+        }
+        #code-description {
+            background: transparent;
+            border: none;
+            font-size: small;
+            font-style: italic;
+            color: lightgrey;
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+
+

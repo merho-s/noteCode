@@ -1,4 +1,4 @@
-<div class="note-thumbnail" [ngClass]="{'note-thumbnail-active': currentRoute === noteRoute }" (click)="onViewNote()">
+<div class="note-thumbnail" [ngClass]="{'note-thumbnail-active': isActive }" (click)="onViewNote()">
     <i class="bx bx-notepad"></i>
     <p>{{ note.title }}</p>
 </div>    
