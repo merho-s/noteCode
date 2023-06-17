@@ -1,24 +1,30 @@
-nav {
+.side-bar {
     padding: 5px;
-    background-color: rgb(232, 232, 233);
+    background-color: white;
     box-shadow: lightgrey 4px 10px 20px;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
 }
 
 .add-note-btn {
     display: flex;
-    height: 50px;
+    height: 30px;
+    margin-bottom: 15px;
+    width: 100%;
     font-size: small;
-    border: solid 1px;
-    border-color:rgb(136, 136, 137);
+    box-shadow: lightgrey 4px 10px 20px;
     border-radius: 5px;
     align-items: center;
-    margin: auto;
-    i {
-        margin-right: 10px;
-    }
 }
 
 .add-note-btn:hover {
-    background-color: lightgrey;
+    background-color: black;
+    color: white;
     cursor: pointer;
+}
+
+.note-thumbnail-active {
+    background-color: black;
+    color: white;
 }

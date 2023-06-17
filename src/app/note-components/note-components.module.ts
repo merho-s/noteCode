@@ -7,11 +7,10 @@ import { RouterModule } from '@angular/router';
 import { NoteComponentsRoutingModule } from './note-components-routing.module';
 import { AddNoteComponent } from './components/add-note/add-note.component';
 import { HighlightService } from '../core/services/highlight.service';
-import { ReactiveFormsModule } from '@angular/forms';
 import { AddCodeComponent } from './components/add-code/add-code.component';
 import { SharedModule } from '../shared/shared.module';
-import { TestFormarrayComponent } from './components/test-formarray/test-formarray.component';
 import { NotesHomeComponent } from './components/notes-home/notes-home.component';
+import { CodeCardComponent } from './components/code-card/code-card.component';
 
 
 
@@ -22,8 +21,8 @@ import { NotesHomeComponent } from './components/notes-home/notes-home.component
     SingleNoteComponent,
     AddNoteComponent,
     AddCodeComponent,
-    TestFormarrayComponent,
-    NotesHomeComponent
+    NotesHomeComponent,
+    CodeCardComponent
   ],
   imports: [
     RouterModule,
@@ -32,7 +31,7 @@ import { NotesHomeComponent } from './components/notes-home/notes-home.component
   ],
   exports: [
     NotesListComponent,
-    NoteThumbnailComponent
+    NoteThumbnailComponent,
   ],
   providers: [
     HighlightService

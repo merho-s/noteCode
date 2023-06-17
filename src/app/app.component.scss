@@ -1,12 +1,9 @@
-.notecode-body {
+.sidebar-content {
     display: flex;
-    flex-direction: row;
+    // margin-top: 60px;
 }
 
-router-outler {
-    margin: 100px;
-}
-
-app-notes-list {
-    width: 250px;
+.content {
+    padding: 15px 5%;
+    width: 100%;
 }

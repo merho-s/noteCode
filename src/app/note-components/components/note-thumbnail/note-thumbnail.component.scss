@@ -1,7 +1,7 @@
 .note-thumbnail {
     display: flex;
     align-items: center;
-    height: 50px;
+    height: 30px;
     width: 100%;
     margin-bottom: 5px;
     border-radius: 5px;
@@ -9,12 +9,10 @@
 }
 
 .note-thumbnail:hover {
-    background-color: lightgrey;
+    background-color: rgb(71, 71, 71);
+    color: white;
     cursor: pointer;
 }
 
-svg {
-    height: 40%;
-    width: 10%;
-}
+
 

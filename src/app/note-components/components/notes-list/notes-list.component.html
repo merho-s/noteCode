@@ -1,9 +1,8 @@
-<nav>
-    <!-- <p (click)="onAddNote()">+</p> -->
+<div class="side-bar">
     <div class="add-note-btn" (click)="onAddNote()">
         <i class='bx bx-plus'></i>
         <p>Ajouter une note</p>
     </div>
-    <app-note-thumbnail *ngFor="let oneNote of notes$ | async" [note]="oneNote"></app-note-thumbnail>
-</nav>
+    <app-note-thumbnail *ngFor="let singleNote of notes$ | async" [note]="singleNote"></app-note-thumbnail>
+</div>
 

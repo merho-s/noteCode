@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, map, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { TokenInfos } from '../models/token.model';
 
@@ -9,11 +9,10 @@ import { TokenInfos } from '../models/token.model';
 })
 
 export class AuthService {
-    isLoggedIn$!: BehaviorSubject<boolean>; 
+    isLoggedIn$ = new BehaviorSubject<boolean>(false); 
     isLoggedIn!: boolean;
     
-    constructor (private http: HttpClient) {
-    }
+    constructor (private http: HttpClient) {}
 
     login(username: string, password: string) {
 
@@ -36,15 +35,13 @@ export class AuthService {
 
     isLogged(): boolean {
         const exp = localStorage.getItem('expirationDate');
-        if(exp !== null) {
-            const res = Date.parse(exp) > Date.now();
-            // this.isLoggedIn$.next(res);
-            // this.isLoggedIn = res;
-            return res;
-        }else {
-            // this.isLoggedIn$.next(false);
-            // this.isLoggedIn = false;
-            return false;
+        if(!exp) {
+            this.isLoggedIn$.next(true);
+           return false;
+        } else {
+            const result = Date.parse(exp) > Date.now();
+            this.isLoggedIn$.next(result);
+            return result;
         }
     }
 }
