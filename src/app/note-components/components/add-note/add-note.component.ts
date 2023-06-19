@@ -46,6 +46,10 @@ export class AddNoteComponent implements OnInit {
     this.codes.push(codeForm);
   }
 
+  onDeleteCode(id: number) {
+    this.codes.removeAt(id);
+  }
+
   onAddTag() {
     const tagForm = this.formBuilder.group({
       name: ['', Validators.required]

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, map, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { TokenInfos } from '../models/token.model';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -10,9 +11,9 @@ import { TokenInfos } from '../models/token.model';
 
 export class AuthService {
     isLoggedIn$ = new BehaviorSubject<boolean>(false); 
-    isLoggedIn!: boolean;
     
-    constructor (private http: HttpClient) {}
+    constructor (private http: HttpClient,
+                private router: Router) {}
 
     login(username: string, password: string) {
 
@@ -22,21 +23,26 @@ export class AuthService {
 
         return this.http.post<TokenInfos>(`${environment.apiUrlUser}/login`, formData).pipe(
             tap(response => {
-                localStorage.setItem('token', response.token),
-                localStorage.setItem('username', response.username),
-                localStorage.setItem('expirationDate', response.expirationDate.toString())
+                localStorage.setItem('token', response.token);
+                localStorage.setItem('username', response.username);
+                localStorage.setItem('expirationDate', response.expirationDate.toString());
             })
         );
     }
 
     logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        localStorage.removeItem('expirationDate');
+        this.router.navigateByUrl('/');
         return this.http.post(environment.apiUrlUser, null);
     } 
 
     isLogged(): boolean {
         const exp = localStorage.getItem('expirationDate');
+        this.isLoggedIn$.pipe(tap((value) => console.log(value)));
         if(!exp) {
-            this.isLoggedIn$.next(true);
+            this.isLoggedIn$.next(false);
            return false;
         } else {
             const result = Date.parse(exp) > Date.now();

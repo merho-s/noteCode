@@ -18,6 +18,11 @@ export class NotesListComponent implements OnInit {
 
   ngOnInit() {
     this.notes$ = this.noteService.getAllNotesByUser();
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.notes$ = this.noteService.getAllNotesByUser();
+    })
   }
 
   onAddNote() {

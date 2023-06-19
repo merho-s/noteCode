@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './interceptors';
 import { SharedModule } from '../shared/shared.module';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -13,6 +14,7 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     HeaderComponent,
     LoginComponent,
+    HomeComponent,
   ],
   imports: [
     HttpClientModule,

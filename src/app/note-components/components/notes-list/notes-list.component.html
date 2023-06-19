@@ -1,6 +1,6 @@
 <div class="side-bar">
     <div class="add-note-btn">
-        <p>My notes</p>
+        <p>Notes</p>
         <i class='bx bx-plus' (click)="onAddNote()"></i>
     </div>
     <app-note-thumbnail *ngFor="let singleNote of notes$ | async" [note]="singleNote"></app-note-thumbnail>

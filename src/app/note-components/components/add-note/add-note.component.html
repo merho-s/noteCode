@@ -11,9 +11,7 @@
                     <i class="bx bx-x" (click)="onDeleteTag(i)"></i>
                 </div>
                 <i class="bx bx-plus add-item-btn" (click)="onAddTag()"></i>
-            </div>
-
-            
+            </div>   
         </div>
         <div>
             <div class="section-title">
@@ -21,13 +19,13 @@
             </div>
             <textarea id="note-description" rows="4" placeholder="Write your note description..." formControlName="description"></textarea>
         </div>
-  
         <div id="codes-section" formArrayName="codes">
             <div class="section-title">
                 Code snippets
             </div>
             <div *ngFor="let codeForm of codes.controls; let i = index">
                 <div id="single-code" [formGroupName]="i">
+                    <i class="bx bx-x" (click)="onDeleteCode(i)"></i>
                     <textarea id="code-text" rows="4" placeholder="Write your code..." formControlName="code"></textarea>
                     <input id="code-description" type="text" placeholder="Write your code description..." formControlName="description">
                     <input id="language" type="text" placeholder="Write your code language..." formControlName="language">
