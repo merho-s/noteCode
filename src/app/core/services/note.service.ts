@@ -3,6 +3,8 @@ import { Note } from '../models/note.model';
 import { Observable, map, switchMap } from 'rxjs'
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { CodeSnippet } from '../models/codesnippet.model';
+import { Codetag } from '../models/codetag.model';
 
 @Injectable({
     providedIn: 'root'
@@ -19,13 +21,7 @@ export class NoteService {
         return this.http.get<Note>(`${environment.apiUrlNote}/${id}`);
     }
 
-    addNote(note: Note): Observable<Note> {
-        // return this.http.post<Note>(environment.apiUrlNote, {
-        //     title: note.title,
-        //     description: note.description,
-        //     codes: note.codes,
-        //     tags: note.tags,
-        // });
+    addNote(note: {title: string, description: string, codes: CodeSnippet[], codetags: Codetag[]}): Observable<Note> {
         return this.http.post<Note>(environment.apiUrlNote, note)
     }
 

@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { CodeSnippet } from 'src/app/core/models/codesnippet.model';
+import { Codetag } from 'src/app/core/models/codetag.model';
 import { Note } from 'src/app/core/models/note.model';
 import { NoteService } from 'src/app/core/services/note.service';
 
@@ -24,15 +25,15 @@ export class AddNoteComponent implements OnInit {
     return this.noteForm.get('codes') as FormArray;
   }
 
-  get tags() {
-    return this.noteForm.get('tags') as FormArray;
+  get codetags() {
+    return this.noteForm.get('codetags') as FormArray;
   }
 
   ngOnInit(): void {
     this.noteForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      tags: this.formBuilder.array([]),
+      codetags: this.formBuilder.array([]),
       codes: this.formBuilder.array([])
     });
   }
@@ -54,19 +55,14 @@ export class AddNoteComponent implements OnInit {
     const tagForm = this.formBuilder.group({
       name: ['', Validators.required]
     });
-    this.tags.push(tagForm);
+    this.codetags.push(tagForm);
   }
 
   onDeleteTag(id: number) {
-    this.tags.removeAt(id);
+    this.codetags.removeAt(id);
   }
 
   onSubmitForm() {
-    // const newNote = {
-    //   title: this.noteForm.value.title,
-    //   description: this.noteForm.value.title,
-    //   tags: 
-    // }
     console.log(this.noteForm.value);
     this.noteService.addNote(this.noteForm.value).pipe(
       tap(() => this.router.navigateByUrl('/notes'))

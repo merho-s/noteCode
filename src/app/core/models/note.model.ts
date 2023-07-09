@@ -9,5 +9,4 @@ export class Note {
     // image?: string;
     codes?: CodeSnippet[];
     tags?: Codetag[];
-    user!: User;
 }

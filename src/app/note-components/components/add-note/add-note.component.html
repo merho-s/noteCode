@@ -1,12 +1,12 @@
 <div class="form-card">
     <form [formGroup]="noteForm">
         <input id="title" type="text" placeholder="Write your title..." formControlName="title">
-        <div id="tags-section" formArrayName="tags">
+        <div id="tags-section" formArrayName="codetags">
             <div class="section-title">
                 Tags 
             </div>
             <div id="tags-flex">
-                <div class="single-tag" [formGroupName]="i" *ngFor="let tagForm of tags.controls; let i = index">
+                <div class="single-tag" [formGroupName]="i" *ngFor="let tagForm of codetags.controls; let i = index">
                     <input type="text" placeholder="Tag" formControlName="name">
                     <i class="bx bx-x" (click)="onDeleteTag(i)"></i>
                 </div>
