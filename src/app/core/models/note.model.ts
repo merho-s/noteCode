@@ -8,5 +8,5 @@ export class Note {
     description!: string;
     // image?: string;
     codes?: CodeSnippet[];
-    tags?: Codetag[];
+    codetags?: Codetag[];
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges, AfterViewInit, AfterViewChecked } 
 import { ActivatedRoute } from '@angular/router';
 import { Note } from 'src/app/core/models/note.model';
 import { NoteService } from 'src/app/core/services/note.service';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { HighlightService } from 'src/app/core/services/highlight.service';
 
 
