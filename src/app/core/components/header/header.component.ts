@@ -1,7 +1,8 @@
 import { Component, OnChanges } from '@angular/core';
-import { User } from '../../models/user.model';
+import { IUser } from '../../models/user.interface';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -9,13 +10,13 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  user!: User;
+  user!: IUser;
+  isLoggedIn$!: Observable<boolean>;
 
-  constructor(private router: Router,
-              private authService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
-  onTitleClick() {
-    this.router.navigateByUrl("/");
+  ngOnInit() {
+    this.isLoggedIn$ = this.authService.isLoggedIn$;
   }
 
   onLogout() {

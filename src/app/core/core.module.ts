@@ -6,8 +6,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './interceptors';
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './components/home/home.component';
-
-
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { RouterModule } from '@angular/router';
+import { UserService } from './services/user.service';
 
 
 @NgModule({
@@ -15,17 +16,20 @@ import { HomeComponent } from './components/home/home.component';
     HeaderComponent,
     LoginComponent,
     HomeComponent,
+    SignUpComponent,
   ],
   imports: [
     HttpClientModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   exports: [
     HeaderComponent
   ],
   providers: [
-    httpInterceptorProviders
+    httpInterceptorProviders,
+    UserService
   ]
 })
 export class CoreModule { }

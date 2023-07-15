@@ -1,6 +1,6 @@
-<div id="login-card" class ="flex-column">
-    <h2>Connection</h2>
-    <form [formGroup]="loginForm" class="flex-column">
+<div id="signup-card" class ="flex-column">
+    <h2>Request Access</h2>
+    <form [formGroup]="signUpForm" class="flex-column">
         <div class="input-form flex-column">
             <label for="username">Username</label>
             <input id="username" type="text" formControlName="username">
@@ -9,7 +9,7 @@
             <label for="password">Password</label>
             <input id="password" type="password" formControlName="password">
         </div>
-        <button class="nc-simple-button" type ="submit" (click)="onSubmitForm()" [disabled]="loginForm.invalid">Log In</button>
+        <button class="nc-simple-button" type ="submit" (click)="onSubmitForm()" [disabled]="signUpForm.invalid">Ask access</button>
     </form>
-    <a routerLink="/signup">Ask access</a>
+    <a routerLink="/login">Already got account ?</a>
 </div>

@@ -1,13 +1,24 @@
 import { HttpClient } from "@angular/common/http";
-import { User } from "../models/user.model";
+import { IUser } from "../models/user.interface";
+import { environment } from "src/environments/environment";
+import { Injectable } from "@angular/core";
+import { CoreModule } from "../core.module";
 
+// @Injectable({
+//     providedIn: 'root'
+// })
+@Injectable()
 export class UserService {
 
     constructor(private http: HttpClient) {}
 
-    // getLoggedUser(): User {
-        
-    // }
+    signUp(user: IUser) {
+        return this.http.post<boolean>(`${environment.apiUrlUser}/signup`, user);
+    }
+
+    requestAccess(user: IUser) {
+        return this.http.post<boolean>(`${environment.apiUrlUser}/requestaccess`, user);
+    }
     
     
 

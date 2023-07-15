@@ -9,14 +9,14 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 })
 
 export class AppComponent {
-  isLoggedIn$!: BehaviorSubject<boolean>;
+  isLoggedIn$!: Observable<boolean>;
 
   title = 'noteCode';
 
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.isLoggedIn$ = this.authService.isLoggedIn$;
+    this.isLoggedIn$ = this.authService.isLoggedIn$.asObservable();
   }
 
   

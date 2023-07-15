@@ -1,6 +1,6 @@
 import { CodeSnippet } from "./codesnippet.model";
 import { Codetag } from "./codetag.model";
-import { User } from "./user.model";
+import { IUser } from "./user.interface";
 
 export class Note {
     id!: number;

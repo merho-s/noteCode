@@ -1,6 +1,6 @@
 <header>
-    <h1 (click)="onTitleClick()">.noteCode</h1>
+    <h1 routerLink="/">.noteCode</h1>
     <div class="user-section">
-        <button (click)="onLogout()">Se déconnecter</button>
+        <button *ngIf="isLoggedIn$ | async" class="nc-simple-button" (click)="onLogout()">Se déconnecter</button>
     </div>
 </header>

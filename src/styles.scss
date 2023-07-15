@@ -11,5 +11,20 @@ body {
     margin: 0;
 }
 
-
-
+.nc-simple-button {
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+}
+.nc-simple-button:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+.nc-simple-button:disabled {
+    border-color: rgb(114, 114, 114);
+    background-color: white;
+    color: rgb(114, 114, 114);
+}

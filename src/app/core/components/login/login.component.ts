@@ -13,8 +13,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
-  token!: string;
-
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
