@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { RouterModule } from '@angular/router';
 import { UserService } from './services/user.service';
+import { UnauthorizedPageComponent } from './pages/unauthorized-page/unauthorized-page.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { UserService } from './services/user.service';
     LoginComponent,
     HomeComponent,
     SignUpComponent,
+    UnauthorizedPageComponent,
   ],
   imports: [
     HttpClientModule,

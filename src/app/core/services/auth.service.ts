@@ -36,6 +36,7 @@ export class AuthService {
         return this.http.post<boolean>(`${environment.apiUrlUser}/signout`, null).pipe(
             tap(() => {
                 localStorage.clear();
+                this.isLogged();
             })
         );
     } 

@@ -15,7 +15,6 @@ export class UserManagementComponent {
   constructor(private adminService: AdminService) {}
 
   ngOnInit() {
-    console.log("test admin");
     this.waitingUsers$ = this.adminService.getAllWaitingUsers();
   }
 

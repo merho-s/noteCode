@@ -10,6 +10,6 @@ export const AdminGuard: CanActivateFn =
         if(authService.isAdmin()) {
             return true;
         } else {
-            return router.navigate(['/']);
+            return router.navigate(['unauthorized']);
         }
     }
