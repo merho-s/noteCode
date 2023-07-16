@@ -12,14 +12,21 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 export class HeaderComponent {
   user!: IUser;
   isLoggedIn$!: Observable<boolean>;
+  isAdmin$!: Observable<boolean>;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,
+              private router: Router) {}
 
   ngOnInit() {
     this.isLoggedIn$ = this.authService.isLoggedIn$;
+    this.isAdmin$ = this.authService.isAdmin$;
   }
 
   onLogout() {
-    this.authService.logout();
+    this.authService.logout().pipe(
+      tap(() => {
+        this.router.navigateByUrl('/login');
+      })
+    ).subscribe();
   }
 }

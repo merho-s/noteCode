@@ -7,6 +7,7 @@ export const AuthGuard: CanActivateFn =
     (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree => {
         const authService: AuthService = inject(AuthService);
         const router: Router = inject(Router);
+        authService.isAdmin();
         if(authService.isLogged()) {
             return true;
         } else {

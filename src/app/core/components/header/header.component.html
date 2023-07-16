@@ -1,7 +1,7 @@
 <header>
     <h1 routerLink="/">.noteCode</h1>
     <div class="user-section">
-        <a routerLink="user-management">User Management</a>
+        <a *ngIf="isAdmin$ | async" routerLink="user-management">Admin Panel</a>
         <button *ngIf="isLoggedIn$ | async" class="nc-simple-button" (click)="onLogout()">Se déconnecter</button>
     </div>
 </header>

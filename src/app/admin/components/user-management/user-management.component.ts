@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { IUser } from 'src/app/core/models/user.interface';
+import { AdminService } from 'src/app/core/services/admin.service';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -11,16 +12,16 @@ import { UserService } from 'src/app/core/services/user.service';
 export class UserManagementComponent {
   waitingUsers$!: Observable<IUser[]>;
 
-  constructor(private userService: UserService) {
-
-  }
+  constructor(private adminService: AdminService) {}
 
   ngOnInit() {
     console.log("test admin");
-    this.waitingUsers$ = this.userService.getAllWaitingUsers();
+    this.waitingUsers$ = this.adminService.getAllWaitingUsers();
   }
 
-  onWhitelistWaitingUser(id: number) {
-    this.userService.whitelistWaitingUser(id).subscribe();
+  onWhitelistWaitingUser(id: number | undefined) {
+    this.adminService.whitelistWaitingUser(id).pipe(
+      tap(() => this.waitingUsers$.subscribe())
+    ).subscribe();
   }
 }

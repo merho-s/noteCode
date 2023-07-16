@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 
 export class AuthService {
     isLoggedIn$ = new BehaviorSubject<boolean>(false); 
+    isAdmin$ = new BehaviorSubject<boolean>(false);
     
     constructor (private http: HttpClient,
                 private router: Router) {}
@@ -32,11 +33,11 @@ export class AuthService {
     }
 
     logout() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('username');
-        localStorage.removeItem('expirationDate');
-        this.router.navigateByUrl('/');
-        return this.http.post(`${environment.apiUrlUser}/signout`, null);
+        return this.http.post<boolean>(`${environment.apiUrlUser}/signout`, null).pipe(
+            tap(() => {
+                localStorage.clear();
+            })
+        );
     } 
 
     isLogged(): boolean {
@@ -49,6 +50,16 @@ export class AuthService {
             const result = Date.parse(exp) > Date.now();
             this.isLoggedIn$.next(result);
             return result;
+        }
+    }
+
+    isAdmin(): boolean {
+        if(localStorage.getItem('role') == 'Admin') {
+            this.isAdmin$.next(true);
+            return true;
+        } else {
+            this.isAdmin$.next(false);
+            return false;
         }
     }
 }
