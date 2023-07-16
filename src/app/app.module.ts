@@ -4,18 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { HeaderComponent } from './core/components/header/header.component';
 import { NoteComponentsModule } from './note-components/note-components.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    NoteComponentsModule
+    NoteComponentsModule,
+    AdminModule
   ],
   bootstrap: [AppComponent]
 })

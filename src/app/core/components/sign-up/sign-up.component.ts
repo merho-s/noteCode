@@ -32,14 +32,7 @@ export class SignUpComponent {
       password: this.signUpForm.value.password
     }
     this.userService.requestAccess(user).pipe(
-      tap(res => {
-        if(res) {
-          console.log(res);
-          this.authService.login(user.username, user.password).pipe(
-            tap(() => this.router.navigateByUrl('notes'))
-          ).subscribe();
-        }
-      })
+      tap(() => this.router.navigateByUrl('/'))
     ).subscribe();
   }
 

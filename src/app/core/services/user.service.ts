@@ -19,6 +19,14 @@ export class UserService {
     requestAccess(user: IUser) {
         return this.http.post<boolean>(`${environment.apiUrlUser}/requestaccess`, user);
     }
+
+    getAllWaitingUsers() {
+        return this.http.get<IUser[]>(`${environment.apiUrlUser}/waitingusers`);
+    }
+
+    whitelistWaitingUser(id: number) {
+        return this.http.post<boolean>(`${environment.apiUrlUser}/whitelist/${id}`, null)
+    }
     
     
 

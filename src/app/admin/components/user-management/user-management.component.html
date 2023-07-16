@@ -1,0 +1,7 @@
+<div id="waiting-user-container" *ngFor="let user of waitingUsers$ | async; let i = index">
+    <p>{{user.username}}</p>
+    <div id="buttons-section">
+        <button id="whitelist-button" class="nc-black-button" (click)="onWhitelistWaitingUser(i)">Whitelist</button>
+        <button id="refuse-button" class="nc-black-button">Refuse</button>
+    </div>
+</div>

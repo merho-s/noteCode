@@ -28,3 +28,21 @@ body {
     background-color: white;
     color: rgb(114, 114, 114);
 }
+
+.nc-black-button {
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid black;
+    background-color: black;
+    color: white;
+}
+.nc-black-button:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+.nc-black-button:disabled {
+    border-color: rgb(114, 114, 114);
+    background-color: white;
+    color: rgb(114, 114, 114);
+}

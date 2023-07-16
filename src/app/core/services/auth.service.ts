@@ -26,6 +26,7 @@ export class AuthService {
                 localStorage.setItem('token', response.token);
                 localStorage.setItem('username', response.username);
                 localStorage.setItem('expirationDate', response.expirationDate.toString());
+                localStorage.setItem('role', response.role);
             })
         );
     }
@@ -35,7 +36,7 @@ export class AuthService {
         localStorage.removeItem('username');
         localStorage.removeItem('expirationDate');
         this.router.navigateByUrl('/');
-        return this.http.post(environment.apiUrlUser, null);
+        return this.http.post(`${environment.apiUrlUser}/signout`, null);
     } 
 
     isLogged(): boolean {

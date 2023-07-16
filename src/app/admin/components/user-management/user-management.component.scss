@@ -1,0 +1,24 @@
+#waiting-user-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    height: 50px;
+    border: solid 2px black;
+    #buttons-section {
+        display: flex;
+        gap: 5px;
+        #whitelist-button {
+            border: none;
+            color: black;
+            background-color: rgb(130, 255, 130);
+        }
+        #refuse-button {
+            border: none;
+            color: black;
+            background-color: rgb(255, 130, 130);
+        }
+    }
+}
