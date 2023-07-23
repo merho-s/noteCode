@@ -7,17 +7,20 @@ import { HomeComponent } from './core/components/home/home.component';
 import { SignUpComponent } from './core/components/sign-up/sign-up.component';
 import { UserManagementComponent } from './admin/components/user-management/user-management.component';
 import { UnauthorizedPageComponent } from './core/pages/unauthorized-page/unauthorized-page.component';
+import { AdminPageComponent } from './admin/pages/admin-page/admin-page.component';
+import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
-  { path: 'user-management', component: UserManagementComponent, canActivate: [AdminGuard] },
+  { path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard] },
   { path: 'unauthorized', component: UnauthorizedPageComponent },
   { path: 'notes', 
     loadChildren: () => import('./note-components/note-components.module').then(m => m.NoteComponentsModule), 
     canActivate: [AuthGuard] 
-  }
+  },
+  { path: '**', component: NotFoundPageComponent },
 ];
 
 @NgModule({

@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 })
 
 export class AuthService {
-    isLoggedIn$ = new BehaviorSubject<boolean>(false); 
-    isAdmin$ = new BehaviorSubject<boolean>(false);
+    private isLoggedIn$ = new BehaviorSubject<boolean>(false); 
+    private isAdmin$ = new BehaviorSubject<boolean>(false);
     
     constructor (private http: HttpClient,
                 private router: Router) {}
@@ -28,6 +28,7 @@ export class AuthService {
                 localStorage.setItem('username', response.username);
                 localStorage.setItem('expirationDate', response.expirationDate.toString());
                 localStorage.setItem('role', response.role);
+                this.isAdmin();
             })
         );
     }
@@ -35,32 +36,42 @@ export class AuthService {
     logout() {
         return this.http.post<boolean>(`${environment.apiUrlUser}/signout`, null).pipe(
             tap(() => {
-                localStorage.clear();
+                localStorage.removeItem('token');
+                localStorage.removeItem('username');
+                localStorage.removeItem('expirationDate');
+                localStorage.removeItem('role');
                 this.isLogged();
             })
         );
     } 
 
     isLogged(): boolean {
-        const exp = localStorage.getItem('expirationDate');
-        this.isLoggedIn$.pipe(tap((value) => console.log(value)));
-        if(!exp) {
+        const expirationDate = localStorage.getItem('expirationDate');
+        if(!expirationDate) {
             this.isLoggedIn$.next(false);
-           return false;
+            return false;
         } else {
-            const result = Date.parse(exp) > Date.now();
+            const result = Date.parse(expirationDate) > Date.now();
             this.isLoggedIn$.next(result);
             return result;
         }
     }
 
     isAdmin(): boolean {
-        if(localStorage.getItem('role') == 'Admin') {
+        if(localStorage.getItem('role') === 'Admin') {
             this.isAdmin$.next(true);
             return true;
         } else {
             this.isAdmin$.next(false);
             return false;
         }
+    }
+
+    getIsLoggedInObservable() {
+        return this.isLoggedIn$.asObservable();
+    }
+
+    getIsAdminObservable() {
+        return this.isAdmin$.asObservable();
     }
 }

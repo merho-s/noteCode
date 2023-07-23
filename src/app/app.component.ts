@@ -16,7 +16,10 @@ export class AppComponent {
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.isLoggedIn$ = this.authService.isLoggedIn$.asObservable();
+    this.isLoggedIn$ = this.authService.getIsLoggedInObservable();
+    if(this.authService.isAdmin()) {
+      this.authService.isLogged();
+    }
   }
 
   

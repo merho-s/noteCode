@@ -18,8 +18,8 @@ export class HeaderComponent {
               private router: Router) {}
 
   ngOnInit() {
-    this.isLoggedIn$ = this.authService.isLoggedIn$;
-    this.isAdmin$ = this.authService.isAdmin$;
+    this.isLoggedIn$ = this.authService.getIsLoggedInObservable();
+    this.isAdmin$ = this.authService.getIsAdminObservable();
   }
 
   onLogout() {

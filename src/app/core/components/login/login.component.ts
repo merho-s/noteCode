@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { NonNullAssert } from '@angular/compiler';
 import { tap } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'login',
@@ -27,7 +28,9 @@ export class LoginComponent {
 
   onSubmitForm() {
     this.authService.login(this.loginForm.value.username, this.loginForm.value.password).pipe(
-      tap(() => this.router.navigateByUrl('notes'))
+      tap(() => {
+        this.router.navigateByUrl('/notes');
+      })
     ).subscribe();
   }
 

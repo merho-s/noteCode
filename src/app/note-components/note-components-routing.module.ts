@@ -6,7 +6,7 @@ import { AddNoteComponent } from './components/add-note/add-note.component';
 import { NotesHomeComponent } from './components/notes-home/notes-home.component';
 
 const routes: Routes = [
-  { path: '', component: NotesHomeComponent},
+  { path: '', component: NotesHomeComponent },
   { path: 'addnote', component: AddNoteComponent},
   { path: ':id', component: SingleNoteComponent },
 ];
