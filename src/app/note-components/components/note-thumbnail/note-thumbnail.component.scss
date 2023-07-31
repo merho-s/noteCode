@@ -1,25 +1,44 @@
 .note-thumbnail {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding-left: 5px;
     padding-right: 5px;
     height: 30px;
     margin-bottom: 5px;
     border-radius: 5px;
     font-size: small;
+    animation-duration: 0.5s;
+    animation-name: slideIn;
     i {
         margin-right: 5px;
     }
+    #left-part {
+        display: flex;
+        align-items: center;
+    }
 }
 
-.note-thumbnail:hover {
-    background-color: rgb(177, 176, 176);
-    color: white;
-    cursor: pointer;
+.destroy-animation {
+    animation-duration: 0.5s;
+    animation-name: slideOut;
 }
 
 .note-thumbnail-active {
     background-color: black;
     color: white;
 }
+
+.note-thumbnail:hover {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    color: white;
+    cursor: pointer;
+    #delete-icon {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    #delete-icon:hover {
+        color: white;
+    }
+}
+
 

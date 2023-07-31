@@ -65,7 +65,9 @@ export class AddNoteComponent implements OnInit {
   onSubmitForm() {
     console.log(this.noteForm.value);
     this.noteService.addNote(this.noteForm.value).pipe(
-      tap(() => this.router.navigateByUrl('/notes'))
+      tap(() => {
+        this.router.navigateByUrl('/notes');
+      })
     ).subscribe();
   }
 }

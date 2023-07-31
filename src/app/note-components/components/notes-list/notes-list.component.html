@@ -3,6 +3,6 @@
         <p>Notes</p>
         <i class='bx bx-plus' (click)="onAddNote()"></i>
     </div>
-    <app-note-thumbnail *ngFor="let singleNote of notes$ | async" [note]="singleNote"></app-note-thumbnail>
+    <app-note-thumbnail *ngFor="let singleNote of notes$ | async; trackBy: noteTrackBy" [note]="singleNote"></app-note-thumbnail>
 </div>
 

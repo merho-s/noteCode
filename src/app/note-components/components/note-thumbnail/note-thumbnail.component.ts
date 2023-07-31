@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute, IsActiveMatchOptions, NavigationEnd, Router } from '@angular/router';
 import { Note } from 'src/app/core/models/note.model';
 import { Observable, filter, map, tap } from 'rxjs'; 
+import { NoteService } from 'src/app/core/services/note.service';
 
 @Component({
   selector: 'app-note-thumbnail',
@@ -11,17 +12,32 @@ import { Observable, filter, map, tap } from 'rxjs';
 export class NoteThumbnailComponent {
   @Input() note!: Note;
   isActive!: boolean;
+  deleteEvent!: boolean;
+  animationEnded!: boolean;
   
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+              private noteService: NoteService) {}
 
   ngDoCheck() {
-    this.isActive = this.router.url === `/notes/${this.note.id}` ? true : false;
+    this.isActive = this.router.url === `/notes/${this.note.id}`;
   }
 
-  onViewNote() {
+  onViewNote(event?: any) {
+    // event.stopPropagation();
     this.router.navigate(['/'], {
       skipLocationChange: true
     }).then(() => this.router.navigate([`/notes/${this.note.id}`]));
+  }
+
+  onDeleteAnimation() {
+    this.deleteEvent = true;
+  }
+
+  onDeleteNote() {
+    if(this.deleteEvent) {
+      this.animationEnded = true;
+      this.noteService.deleteNote(this.note.id).subscribe();
+    }
   }
 
 }

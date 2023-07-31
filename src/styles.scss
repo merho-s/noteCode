@@ -11,6 +11,7 @@ body {
     margin: 0;
 }
 
+
 .nc-simple-button {
     padding: 5px;
     border-radius: 5px;
@@ -45,4 +46,28 @@ body {
     border-color: rgb(114, 114, 114);
     background-color: white;
     color: rgb(114, 114, 114);
+}
+
+//animations
+@keyframes slideIn {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        margin-left: 0%;
+        width: 100%;
+      }
+      to {
+        margin-left: -100%;
+        width: 0%;
+      }
+    
 }

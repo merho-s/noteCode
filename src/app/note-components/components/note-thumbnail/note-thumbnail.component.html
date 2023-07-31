@@ -1,4 +1,7 @@
-<div class="note-thumbnail" [ngClass]="{'note-thumbnail-active': isActive }" (click)="onViewNote()">
-    <i class="bx bx-notepad"></i>
-    <p>{{ note.title }}</p>
-</div>    
+<div *ngIf="!animationEnded" class="note-thumbnail" [ngClass]="{'note-thumbnail-active': isActive,  'note-thumbnail:hover': !isActive, 'destroy-animation': deleteEvent}" (click)="onViewNote()" (animationend)="onDeleteNote()">
+    <div id="left-part">
+        <i class="bx bx-notepad"></i>
+        <p>{{ note.title }}</p>
+    </div>
+    <i id="delete-icon" (click)="onDeleteAnimation()" class="bx bxs-trash-alt"></i>  
+</div>  

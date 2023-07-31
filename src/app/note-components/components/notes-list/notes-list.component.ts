@@ -17,15 +17,20 @@ export class NotesListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.notes$ = this.noteService.getAllNotesByUser();
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      this.notes$ = this.noteService.getAllNotesByUser();
-    })
+    this.notes$ = this.noteService.getUserNotesObservable();
+    this.noteService.getAllNotesByUser();
+    // this.router.events.pipe(
+    //   filter(event => event instanceof NavigationEnd)
+    // ).subscribe(() => {
+    //   this.notes$ = this.noteService.getAllNotesByUser();
+    // })
   }
 
   onAddNote() {
     this.router.navigateByUrl('notes/addnote');
+  }
+
+  noteTrackBy(index: number, note: Note) {
+    return note.id;
   }
 }
