@@ -18,18 +18,14 @@ export class NotesListComponent implements OnInit {
 
   ngOnInit() {
     this.notes$ = this.noteService.getUserNotesObservable();
-    this.noteService.getAllNotesByUser();
-    // this.router.events.pipe(
-    //   filter(event => event instanceof NavigationEnd)
-    // ).subscribe(() => {
-    //   this.notes$ = this.noteService.getAllNotesByUser();
-    // })
+    this.noteService.refreshUserNotes();
   }
 
   onAddNote() {
     this.router.navigateByUrl('notes/addnote');
   }
 
+  //trackBy permet de traquer de les éléments dans un ngFor pour ne pas à recharger un élément déjà existant si le tableau est mis à jour
   noteTrackBy(index: number, note: Note) {
     return note.id;
   }

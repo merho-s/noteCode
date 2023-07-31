@@ -6,7 +6,7 @@ header {
     justify-content: space-between;
     padding: 5px;
     // box-shadow: lightgrey 4px 10px 20px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(150, 150, 150);
     h1:hover {
         cursor: pointer;
     }
@@ -19,6 +19,7 @@ header {
         gap: 15px;
     }
 }
+
 
 
 

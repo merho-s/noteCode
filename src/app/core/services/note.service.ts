@@ -29,12 +29,12 @@ export class NoteService {
 
     addNote(note: {title: string, description: string, codes: CodeSnippet[], codetags: Codetag[]}) {
         return this.http.post<Note>(environment.apiUrlNote, note).pipe(
-            tap(() => this.getAllNotesByUser())
+            tap(() => this.refreshUserNotes())
         );
     }
 
-    getAllNotesByUser() {
-        this.http.get<Note[]>(environment.apiUrlNote).pipe(
+    refreshUserNotes() {
+        return this.http.get<Note[]>(environment.apiUrlNote).pipe(
             tap(notes => this.userNotes$.next(notes))
         ).subscribe();
     }
@@ -45,9 +45,7 @@ export class NoteService {
         )
     }
 
-    deleteNote(id: number): Observable<Note> {
-        return this.http.delete<Note>(`${environment.apiUrlNote}/${id}`).pipe(
-            tap(() => this.getAllNotesByUser())
-        );
+    deleteNote(id: number): Observable<boolean> {
+        return this.http.delete<boolean>(`${environment.apiUrlNote}/${id}`);
     }
 }

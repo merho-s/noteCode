@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute, IsActiveMatchOptions, NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Note } from 'src/app/core/models/note.model';
-import { Observable, filter, map, tap } from 'rxjs'; 
+import { tap } from 'rxjs'; 
 import { NoteService } from 'src/app/core/services/note.service';
 
 @Component({
@@ -11,9 +11,9 @@ import { NoteService } from 'src/app/core/services/note.service';
 })
 export class NoteThumbnailComponent {
   @Input() note!: Note;
-  isActive!: boolean;
-  deleteEvent!: boolean;
-  animationEnded!: boolean;
+  isActive: boolean = false;
+  isDeleted: boolean = false;
+  deleteAnimationEnded: boolean = false;
   
   constructor(private router: Router,
               private noteService: NoteService) {}
@@ -22,22 +22,27 @@ export class NoteThumbnailComponent {
     this.isActive = this.router.url === `/notes/${this.note.id}`;
   }
 
-  onViewNote(event?: any) {
-    // event.stopPropagation();
+  onViewNote() {
     this.router.navigate(['/'], {
       skipLocationChange: true
     }).then(() => this.router.navigate([`/notes/${this.note.id}`]));
   }
 
-  onDeleteAnimation() {
-    this.deleteEvent = true;
+  onDeleteAnimationEnd() {
+    if(this.isDeleted) {
+      this.deleteAnimationEnded = true;
+      // this.noteService.refreshUserNotes();
+    }
   }
 
   onDeleteNote() {
-    if(this.deleteEvent) {
-      this.animationEnded = true;
-      this.noteService.deleteNote(this.note.id).subscribe();
-    }
+    this.noteService.deleteNote(this.note.id).pipe(
+      tap(res => {
+        if(res) {
+          this.isDeleted = true;
+        }
+      })
+    ).subscribe();
   }
 
 }
