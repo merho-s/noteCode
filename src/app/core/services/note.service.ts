@@ -4,7 +4,6 @@ import { BehaviorSubject, Observable, map, switchMap, tap } from 'rxjs'
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { CodeSnippet } from '../models/codesnippet.model';
-import { Codetag } from '../models/codetag.model';
 
 @Injectable({
     providedIn: 'root'
@@ -27,7 +26,7 @@ export class NoteService {
         return this.http.get<Note>(`${environment.apiUrlNote}/${id}`);
     }
 
-    addNote(note: {title: string, description: string, codes: CodeSnippet[], codetags: Codetag[]}) {
+    addNote(note: {title: string, description: string, codes: CodeSnippet[], codetags: string[]}) {
         return this.http.post<Note>(environment.apiUrlNote, note).pipe(
             tap(() => this.refreshUserNotes())
         );

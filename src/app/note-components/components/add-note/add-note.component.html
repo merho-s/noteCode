@@ -5,12 +5,17 @@
             <div class="section-title">
                 Tags 
             </div>
-            <div id="tags-flex">
-                <div class="single-tag" [formGroupName]="i" *ngFor="let tagForm of codetags.controls; let i = index">
-                    <input type="text" placeholder="Tag" formControlName="name">
+            <input type="text" placeholder="Search tag..." (input)="onSearchTyping($event)">
+            <div class="tags-flex">
+                <app-tag [isClickable]="true" [text]="tag" *ngFor="let tag of searchedTags" (onClickEvent)="onAddTag(tag)"></app-tag>
+                <!-- <div class="single-tag" [formGroupName]="i" *ngFor="let tagForm of codetags.controls; let i = index">
+                    <input type="text" placeholder="Tag" formControlName="name">S
                     <i class="bx bx-x" (click)="onDeleteTag(i)"></i>
                 </div>
-                <i class="bx bx-plus add-item-btn" (click)="onAddTag()"></i>
+                <i class="bx bx-plus add-item-btn" (click)="onAddTag()"></i> -->
+            </div>
+            <div class="tags-flex">
+                <app-tag [isClosable]="true" [text]="tag" *ngFor="let tag of codetags.value; let i = index" (onCloseEvent)="onDeleteTag(i)"></app-tag>
             </div>   
         </div>
         <div>

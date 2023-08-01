@@ -31,15 +31,17 @@ export class NoteThumbnailComponent {
   onDeleteAnimationEnd() {
     if(this.isDeleted) {
       this.deleteAnimationEnded = true;
-      // this.noteService.refreshUserNotes();
+      this.noteService.refreshUserNotes();
     }
   }
 
-  onDeleteNote() {
+  onDeleteNote(event?: any) {
+    event.stopPropagation();
     this.noteService.deleteNote(this.note.id).pipe(
       tap(res => {
         if(res) {
           this.isDeleted = true;
+          this.router.navigateByUrl('');
         }
       })
     ).subscribe();

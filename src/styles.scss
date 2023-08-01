@@ -64,10 +64,22 @@ body {
     from {
         margin-left: 0%;
         width: 100%;
-      }
-      to {
+    }
+    to {
         margin-left: -100%;
         width: 0%;
-      }
+    }
     
+}
+
+@keyframes deleteIconAnimation {
+    from {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

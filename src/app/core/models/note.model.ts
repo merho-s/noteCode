@@ -1,6 +1,4 @@
 import { CodeSnippet } from "./codesnippet.model";
-import { Codetag } from "./codetag.model";
-import { IUser } from "./user.interface";
 
 export class Note {
     id!: number;
@@ -8,5 +6,5 @@ export class Note {
     description!: string;
     // image?: string;
     codes?: CodeSnippet[];
-    codetags?: Codetag[];
+    codetags?: string[];
 }

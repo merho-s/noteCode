@@ -30,8 +30,9 @@
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
-    #tags-flex {
+    .tags-flex {
         display: flex;
+        flex-wrap: wrap;
         gap: 3px;
         align-items: center;
         .single-tag {
@@ -42,7 +43,7 @@
             width: 75px;
             background-color: black;
             height: 20px;
-            border-radius: 15px;
+            border-radius: 10px;
             padding: 2px;
             border: none;
             font-size: small;

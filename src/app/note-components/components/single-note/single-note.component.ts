@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, OnChanges, AfterViewInit, AfterViewChecked } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Note } from 'src/app/core/models/note.model';
 import { NoteService } from 'src/app/core/services/note.service';
-import { Observable, tap } from 'rxjs';
+import { Observable, catchError, tap } from 'rxjs';
 import { HighlightService } from 'src/app/core/services/highlight.service';
 
 
@@ -18,7 +18,8 @@ export class SingleNoteComponent implements OnInit, AfterViewChecked {
 
   constructor(private noteService: NoteService,
               private route: ActivatedRoute,
-              private highlightService: HighlightService) {}
+              private highlightService: HighlightService,
+              private router: Router) {}
   
   ngAfterViewChecked(): void {
     this.highlightService.highlightAll();

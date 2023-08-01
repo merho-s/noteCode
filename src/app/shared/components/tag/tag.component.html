@@ -1,4 +1,6 @@
-<div id="tag-container">
-    {{ text }}
+<div *ngIf="!isInput" class="tag-container" [ngClass]="{'tag-container-clickable:hover tag-container-clickable': isClickable}" (click)="onClick($event)">
+    <p>{{ text }}</p>
+    <i *ngIf="isClosable" class="bx bx-x" (click)="onClose($event)"></i>
 </div>
+
 

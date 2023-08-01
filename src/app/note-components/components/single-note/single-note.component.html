@@ -1,7 +1,7 @@
 <div class="single-note" *ngIf="note$ | async as note">
     <h2>{{ note.title }}</h2>
     <div id="tags-section">
-        <app-tag *ngFor="let tag of note.codetags" [text]="tag.name"></app-tag>
+        <app-tag *ngFor="let tag of note.codetags" [text]="tag"></app-tag>
     </div>
     <p>{{ note.description }}</p>
     <app-code-card *ngFor="let singleCode of note.codes" [singleCode]="singleCode"></app-code-card>

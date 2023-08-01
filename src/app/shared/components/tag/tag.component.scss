@@ -1,13 +1,30 @@
-#tag-container {
+.tag-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     font-size: small;
+    min-width: 30px;
     color: white;
-    width: 75px;
     background-color: black;
-    height: 20px;
-    border-radius: 15px;
-    padding: 2px;
+    height: 25px;
+    border-radius: 8px;
+    padding: 0 4px;
     border: none;
+    p {
+        margin: auto;
+    }
+    i:hover {
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 5px;
+    }
+}
+
+.tag-container-clickable {
+    background-color: rgb(60, 60, 60);
+}
+
+.tag-container-clickable:hover {
+    cursor: pointer;
+    background-color: black;
 }
