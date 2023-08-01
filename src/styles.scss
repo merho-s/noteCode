@@ -48,8 +48,30 @@ body {
     color: rgb(114, 114, 114);
 }
 
+
+
 //animations
-@keyframes slideIn {
+.slide-in-hor {
+    animation: slideInHorizontal 0.25s;
+}
+
+.slide-in-hor-reverse {
+    animation: slideInHorizontal 0.25s reverse;
+}
+
+.slide-in-ver {
+    animation: slideInVertical 0.25s;
+}
+
+.slide-in-ver-reverse {
+    animation: slideInVertical 0.25s reverse;
+}
+
+.reduce-size {
+    animation: reducingSizeOnDelete 0.25s;
+}
+
+@keyframes slideInHorizontal {
     from {
         margin-left: 100%;
         width: 300%;
@@ -60,7 +82,7 @@ body {
     }
 }
 
-@keyframes slideOut {
+@keyframes slideOutHorizontal {
     from {
         margin-left: 0%;
         width: 100%;
@@ -69,7 +91,28 @@ body {
         margin-left: -100%;
         width: 0%;
     }
-    
+}
+
+@keyframes slideInVertical {
+    from {
+        translate: 0 -50px;
+        opacity: 0;
+    }
+    to {
+        translate: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes reducingSizeOnDelete {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0);
+        opacity: 0;
+    }
 }
 
 @keyframes deleteIconAnimation {

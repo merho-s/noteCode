@@ -1,5 +1,5 @@
 <div *ngIf="!deleteAnimationEnded"
-    class="note-thumbnail" 
+    class="note-thumbnail slide-in-hor" 
     [ngClass]="{'note-thumbnail-active': isActive, 'delete-animation': isDeleted}"
     (animationend)="onDeleteAnimationEnd()" 
     (click)="onViewNote()"

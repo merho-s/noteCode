@@ -1,4 +1,4 @@
-<div class="single-note" *ngIf="note$ | async as note">
+<div class="slide-in-hor" *ngIf="note$ | async as note">
     <h2>{{ note.title }}</h2>
     <div id="tags-section">
         <app-tag *ngFor="let tag of note.codetags" [text]="tag"></app-tag>

@@ -8,8 +8,6 @@
     margin-bottom: 5px;
     border-radius: 5px;
     font-size: small;
-    animation-duration: 0.5s;
-    animation-name: slideIn;
     i {
         margin-right: 5px;
     }
@@ -18,14 +16,12 @@
         align-items: center;
     }
     #delete-icon {
-        animation-duration: 1s;
-        animation-name: deleteIconAnimation;
+        animation: deleteIconAnimation 0.5s;
     }
 }
 
 .delete-animation {
-    animation-duration: 0.5s;
-    animation-name: slideOut;
+    animation: slideOutHorizontal 0.25s;
 }
 
 .note-thumbnail-active {

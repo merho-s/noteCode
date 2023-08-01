@@ -17,6 +17,7 @@ export class AddNoteComponent implements OnInit {
   tagSearch!: string;
   allTags!: string[];
   searchedTags!: string[];
+  tagsFound: boolean = false;;
   @Input() newCode!: CodeSnippet;
   
   get codes() {
@@ -60,21 +61,26 @@ export class AddNoteComponent implements OnInit {
     //   name: [tagName, Validators.required]
     // });
     // const tagCtrl = [tagName, Validators.required]
-    this.codetags.push(this.formBuilder.control(tagName));
-    console.log(this.codetags);
+    let codetagsArray: string[] = this.codetags.value;
+    if(!codetagsArray.find(tag => tag.toLowerCase() === tagName.toLowerCase())) {
+      this.codetags.push(this.formBuilder.control(tagName));
+    }
   }
 
   onDeleteTag(id: number) {
     this.codetags.removeAt(id);
   }
 
-  onSearchTyping(event: Event) {
+  onSearchTagTyping(event: Event) {
     const inputValue = (event.target as HTMLInputElement).value;
     if(inputValue !== '') {
       if(inputValue.length <= 1) {
         this.searchedTags = this.allTags.filter(value => value.toLocaleLowerCase().startsWith(inputValue.toLocaleLowerCase()));
       } else this.searchedTags = this.allTags.filter(value => value.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase()));
     } else this.searchedTags = []
+    if(this.searchedTags.length !== 0) {
+      this.tagsFound = true;
+    } else this.tagsFound = false;
   }
 
   onSubmitForm() {

@@ -1,4 +1,8 @@
-<div *ngIf="!isInput" class="tag-container" [ngClass]="{'tag-container-clickable:hover tag-container-clickable': isClickable}" (click)="onClick($event)">
+<div *ngIf="!isInput" 
+    class="tag-container {{startAnimation}}" 
+    [ngClass]="{'tag-container-clickable:hover tag-container-clickable': isClickable }" 
+    (click)="onClick($event)" 
+    (animationend)="onCloseAnimationEnd()">
     <p>{{ text }}</p>
     <i *ngIf="isClosable" class="bx bx-x" (click)="onClose($event)"></i>
 </div>
