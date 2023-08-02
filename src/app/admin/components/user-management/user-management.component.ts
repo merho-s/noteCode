@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { IUser } from 'src/app/core/models/user.interface';
 import { AdminService } from 'src/app/core/services/admin.service';
-import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-user-management',
@@ -18,7 +17,7 @@ export class UserManagementComponent {
     this.waitingUsers$ = this.adminService.getAllWaitingUsers();
   }
 
-  onWhitelistWaitingUser(id: number | undefined) {
+  onWhitelistWaitingUser(id: number) {
     this.adminService.whitelistWaitingUser(id).pipe(
       tap(() => this.waitingUsers$.subscribe())
     ).subscribe();

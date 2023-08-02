@@ -57,6 +57,7 @@ export class AddNoteComponent implements OnInit {
   }
 
   onAddTag(tagName: string) {
+    //THIS IS THE OLD TAG ADD METHOD
     // const tagForm = this.formBuilder.group({
     //   name: [tagName, Validators.required]
     // });

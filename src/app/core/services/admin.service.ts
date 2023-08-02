@@ -14,7 +14,7 @@ export class AdminService {
     return this.http.get<IUser[]>(`${environment.apiUrlAdmin}/waitingusers`);
   }
 
-  whitelistWaitingUser(id: number | undefined) {
+  whitelistWaitingUser(id: number) {
     return this.http.post<boolean>(`${environment.apiUrlAdmin}/whitelist/${id}`, null)
   }
 }

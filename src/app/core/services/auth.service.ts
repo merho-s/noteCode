@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, Subject, map, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { TokenInfos } from '../models/token.model';
 import { Router } from '@angular/router';
+import { IAuthentication } from '../models/authentication.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -16,13 +17,8 @@ export class AuthService {
     constructor (private http: HttpClient,
                 private router: Router) {}
 
-    login(username: string, password: string) {
-
-        const formData = new FormData();
-        formData.append('username', username);
-        formData.append('password', password);
-
-        return this.http.post<TokenInfos>(`${environment.apiUrlUser}/login`, formData).pipe(
+    login(auth: IAuthentication) {
+        return this.http.post<TokenInfos>(`${environment.apiUrlUser}/login`, auth).pipe(
             tap(response => {
                 localStorage.setItem('token', response.token);
                 localStorage.setItem('username', response.username);

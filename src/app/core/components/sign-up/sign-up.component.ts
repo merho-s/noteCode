@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
-import { IUser } from "../../models/user.interface";
 import { tap } from 'rxjs';
+import { IAuthentication } from '../../models/authentication.interface';
 
 @Component({
   selector: 'app-sign-up',
@@ -27,7 +27,7 @@ export class SignUpComponent {
   }
 
   onSubmitForm() {
-    let user: IUser = {
+    let user: IAuthentication = {
       username: this.signUpForm.value.username,
       password: this.signUpForm.value.password
     }

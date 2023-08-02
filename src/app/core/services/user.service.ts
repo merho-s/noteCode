@@ -1,8 +1,7 @@
 import { HttpClient } from "@angular/common/http";
-import { IUser } from "../models/user.interface";
 import { environment } from "src/environments/environment";
 import { Injectable } from "@angular/core";
-import { CoreModule } from "../core.module";
+import { IAuthentication } from "../models/authentication.interface";
 
 // @Injectable({
 //     providedIn: 'root'
@@ -12,11 +11,11 @@ export class UserService {
 
     constructor(private http: HttpClient) {}
 
-    signUp(user: IUser) {
+    signUp(user: IAuthentication) {
         return this.http.post<boolean>(`${environment.apiUrlUser}/signup`, user);
     }
 
-    requestAccess(user: IUser) {
+    requestAccess(user: IAuthentication) {
         return this.http.post<boolean>(`${environment.apiUrlUser}/requestaccess`, user);
     }
 
