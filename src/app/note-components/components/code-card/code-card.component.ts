@@ -23,6 +23,6 @@ export class CodeCardComponent {
   }
 
   ngAfterViewChecked() {
-    this.highlightService.highlightAll();
+    this.highlightService.highlight(this.prismLanguage);
   }
 }

@@ -130,14 +130,25 @@
             background-color: rgb(30, 30, 30);
             color: white;
             min-height: 50px;
+            padding: 5px;
         }
         #code-description {
+            display: flex;
+            padding: 10px;
+            gap: 5px;
             background: transparent;
-            border: none;
-            font-size: small;
-            font-style: italic;
             color: lightgrey;
             margin-bottom: 0;
+            i {
+                margin-top: 2px;
+            }
+            textarea {
+                width: 100%;
+                border: none;
+                background-color: inherit;
+                font-size: medium;
+                color: inherit;
+            }
         }
     }
 }

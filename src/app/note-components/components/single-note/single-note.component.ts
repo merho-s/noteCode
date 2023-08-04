@@ -12,7 +12,7 @@ import { HighlightService } from 'src/app/core/services/highlight.service';
   styleUrls: ['./single-note.component.scss']
 })
 
-export class SingleNoteComponent implements OnInit, AfterViewChecked {
+export class SingleNoteComponent implements OnInit {
   @Input() note!: Note;
   note$!: Observable<Note>;
 
@@ -20,10 +20,7 @@ export class SingleNoteComponent implements OnInit, AfterViewChecked {
               private route: ActivatedRoute,
               private highlightService: HighlightService,
               private router: Router) {}
-  
-  ngAfterViewChecked(): void {
-    this.highlightService.highlightAll();
-  }
+
 
   ngOnInit() {
     const noteId = this.route.snapshot.params['id'];

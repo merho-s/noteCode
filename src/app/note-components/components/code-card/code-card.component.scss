@@ -13,21 +13,30 @@
         color: lightgrey;
         margin-bottom: 2px;
         i {
-            // border: solid 2px lightgrey;
+            font-size: x-large;
             border-radius: 2px;
         }
         #code-language {
-            font-size: x-small;
+            font-size: small;
         }
     }
     pre {
-        margin: 0;
+        padding: 5px 0;
         font-size: small;
-        font-family: 'Andale Mono', monospace !important;
     }
     #code-description {
-        font-size: small;
-        font-style: italic;
+        display: flex;
+        // align-items:first;
         color: lightgrey;
+        gap: 5px;
+        padding: 10px;
+        i {
+            margin-top: 2px;
+        }
+        p{
+            font-size: small;
+            font-style: italic;
+        }
+
     }
 }

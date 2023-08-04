@@ -43,8 +43,10 @@
                         <i id="close-icon" class="bx bx-x" (click)="onDeleteCode(i)"></i>
                     </div>
                     <textarea id="code-text" type="input" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' placeholder="Write your code..." formControlName="code"></textarea>
-                    <textarea id="code-description" type="input" rows=1 oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' placeholder="Write your code description..." formControlName="description"></textarea>
-                    <!-- <input id="language" type="text" placeholder="Write your code language..." formControlName="language"> -->
+                    <div id="code-description">
+                        <i class="bx bx-comment-detail"></i>
+                        <textarea type="input" rows=1 oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' placeholder="Write your code description..." formControlName="description"></textarea>
+                    </div>
                 </div>
             </div>
         </div>
