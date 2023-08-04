@@ -3,7 +3,7 @@ interface CodeLanguage {
     alias : string
 }
 
-export const CodeLanguages: CodeLanguage[]= [
+export const CODES_LANGUAGES: CodeLanguage[]= [
     { language: 'Plain Text', alias: '' },
     { language: 'C#', alias: 'cs' },
     { language: 'TypeScript', alias: 'ts' },

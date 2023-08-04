@@ -5,7 +5,7 @@ import { tap } from 'rxjs';
 import { CodeSnippet } from 'src/app/core/models/codesnippet.model';
 import { NoteService } from 'src/app/core/services/note.service';
 import { TagService } from 'src/app/core/services/tag.service';
-import { CodeLanguages } from 'src/app/shared/global_constants/languages.const';
+import { CODES_LANGUAGES } from 'src/app/shared/global_constants/languages.const';
 
 @Component({
   selector: 'app-add-note',
@@ -13,7 +13,7 @@ import { CodeLanguages } from 'src/app/shared/global_constants/languages.const';
   styleUrls: ['./add-note.component.scss']
 })
 export class AddNoteComponent implements OnInit {
-  codeLanguages: string[] = CodeLanguages.map(l => l.language);
+  codeLanguages: string[] = CODES_LANGUAGES.map(l => l.language);
   noteForm!: FormGroup;
   tagSearch!: string;
   allTags!: string[];
