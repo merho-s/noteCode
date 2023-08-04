@@ -4,7 +4,7 @@
         <p id="code-language">{{ singleCode.language }}</p>
     </div>
     <pre [ngClass]="'language-' + prismLanguage" class="line-numbers"><code>{{ singleCode.code }}</code></pre>
-    <div id="code-description">
+    <div *ngIf="singleCode.description" id="code-description">
         <i class="bx bx-comment-detail"></i>
         <p>{{ singleCode.description }}</p>
     </div>
