@@ -41,7 +41,8 @@ export class NoteThumbnailComponent {
       tap(res => {
         if(res) {
           this.isDeleted = true;
-          this.router.navigateByUrl('');
+          if(this.router.url === `/notes/${this.note.id}`)
+            this.router.navigateByUrl('');
         }
       })
     ).subscribe();

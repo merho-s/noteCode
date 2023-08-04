@@ -1,17 +1,23 @@
-.sidebar-content {
+#sidebar-content {
     display: flex;
-    // margin-top: 60px;
 }
 
-.content {
+#sidebar {
+    margin-top: 60px;
+}
+
+#content {
+    margin-top: 60px;
     padding: 15px 5%;
     width: 100%;
+    overflow: auto;
 }
 
 #version-annotation {
     position: absolute;
-    margin-left: 2px;
-    margin-top: 50px;
+    margin-top: 40px;
+    margin-left: 5px;
     color: rgb(165, 165, 165);
     font-size: small;
+    z-index: 1000;
 }

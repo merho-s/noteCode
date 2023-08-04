@@ -1,7 +1,7 @@
-<header>
+<div id="header-content">
     <h1 routerLink="/">.noteCode</h1>
     <div class="user-section">
         <a *ngIf="(isAdmin$ | async) && (isLoggedIn$ | async)" routerLink="admin">Admin Panel</a>
-        <button *ngIf="isLoggedIn$ | async" class="nc-simple-button" (click)="onLogout()">Se déconnecter</button>
+        <button *ngIf="isLoggedIn$ | async" class="nc-simple-button" (click)="onLogout()">Log out</button>
     </div>
-</header>
+</div>

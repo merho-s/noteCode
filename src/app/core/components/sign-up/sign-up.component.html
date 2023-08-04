@@ -1,13 +1,21 @@
-<div id="signup-card" class ="flex-column">
+<div id="signup-card" class ="flex-column slide-in-hor">
     <h2>Request Access</h2>
     <form [formGroup]="signUpForm" class="flex-column">
         <div class="input-form flex-column">
+            <label for="email">Email</label>
+            <input id="email" type="text" [formControl]="emailCtrl">
+        </div>
+        <div class="input-form flex-column">
             <label for="username">Username</label>
-            <input id="username" type="text" formControlName="username">
+            <input id="username" type="text" [formControl]="usernameCtrl">
         </div>
         <div class="input-form flex-column">
             <label for="password">Password</label>
-            <input id="password" type="password" formControlName="password">
+            <input id="password" type="password" [formControl]="passwordCtrl">
+        </div>
+        <div class="input-form flex-column">
+            <label for="confirm-password">Confirm Password</label>
+            <input id="confirm-password" type="password" [formControl]="confirmPasswordCtrl">
         </div>
         <button class="nc-simple-button" type ="submit" (click)="onSubmitForm()" [disabled]="signUpForm.invalid">Ask access</button>
     </form>

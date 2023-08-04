@@ -1,4 +1,9 @@
 <div id="code-card">
-    <pre [ngClass]="'language-' + singleCode.language"><code>{{ singleCode.code }}</code></pre>
-    <p>{{ singleCode.description }}</p>
+    <div id="code-header">
+        <i class="bx bx-code-block"></i>
+        <p id="code-language">{{ singleCode.language }}</p>
+    </div>
+
+    <pre [ngClass]="'language-' + prismLanguage"><code>{{ singleCode.code }}</code></pre>
+    <p id="code-description">{{ singleCode.description }}</p>
 </div>

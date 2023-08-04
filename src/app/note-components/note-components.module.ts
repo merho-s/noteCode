@@ -9,8 +9,8 @@ import { AddNoteComponent } from './components/add-note/add-note.component';
 import { HighlightService } from '../core/services/highlight.service';
 import { AddCodeComponent } from './components/add-code/add-code.component';
 import { SharedModule } from '../shared/shared.module';
-import { NotesHomeComponent } from './components/notes-home/notes-home.component';
 import { CodeCardComponent } from './components/code-card/code-card.component';
+import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 
 
 
@@ -21,8 +21,8 @@ import { CodeCardComponent } from './components/code-card/code-card.component';
     SingleNoteComponent,
     AddNoteComponent,
     AddCodeComponent,
-    NotesHomeComponent,
-    CodeCardComponent
+    CodeCardComponent,
+    CodeEditorComponent
   ],
   imports: [
     RouterModule,

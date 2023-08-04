@@ -1,7 +1,10 @@
 <div class="side-bar">
-    <div class="add-note-btn">
-        <p>Notes</p>
-        <i class='bx bx-plus' (click)="onAddNote()"></i>
+    <div id="notes-list-header">
+        <div id="notes-list-header-left-part">
+            <i class="bx bx-note"></i>
+            <p>NOTES</p>
+        </div>
+        <i id="add-note-btn" class='bx bx-plus' (click)="onAddNote()"></i>
     </div>
     <app-note-thumbnail *ngFor="let singleNote of notes$ | async; trackBy: noteTrackBy" [note]="singleNote"></app-note-thumbnail>
 </div>

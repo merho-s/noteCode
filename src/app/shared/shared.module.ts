@@ -7,7 +7,7 @@ import { TagComponent } from './components/tag/tag.component';
 
 @NgModule({
   declarations: [
-    TagComponent
+    TagComponent,
   ],
   imports: [
     CommonModule,
@@ -18,7 +18,7 @@ import { TagComponent } from './components/tag/tag.component';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    TagComponent
+    TagComponent,
   ]
 })
 export class SharedModule { }

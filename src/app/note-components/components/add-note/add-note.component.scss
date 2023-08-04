@@ -5,25 +5,21 @@
     margin-bottom: 10px;
 }
 
-.section-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: small;
-    color: rgb(139, 139, 139);
-    margin: 0;
-    font-style: italic;
-    i:hover {
-        cursor: pointer;
-    }
-}
-
-.add-item-btn {
+#add-item-btn {
     color: black;
 }
-
-.add-item-btn:hover {
+#add-item-btn:hover {
+    background-color: black;
+    color: white;
+    border-radius: 3px;
     cursor: pointer;
+}
+
+.title-section {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 5px;
 }
 
 #tags-section {
@@ -40,7 +36,6 @@
             align-items: center;
             input {
                 border: none;
-                outline: none;
             }
         }
     }
@@ -70,9 +65,6 @@
         //         color: white;
         //         text-align: center;
         //     }
-        //     input:focus {
-        //         outline: none;
-        //     }
         //     i {
         //         color: white;
         //     }
@@ -87,10 +79,11 @@
     width: 100%;
     box-sizing: border-box;
     margin-bottom: 10px;
-    resize: none;
+    border: none;
 }
 
 #codes-section {
+    margin-bottom: 30px;
     #single-code {
         background-color: rgb(60, 60, 60);
         padding: 5px;
@@ -98,20 +91,45 @@
         display: flex;
         flex-direction: column;
         margin-bottom: 10px;
-        i {
-            color: lightgrey;
-            margin-bottom: 5px;
+        #code-header {
             display: flex;
-            justify-content: flex-end;
-        }
-        i:hover {
-            color: white;
-            cursor: pointer;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 3px;
+            #code-header-left-part {
+                display: flex;
+                align-items: center;
+                gap: 3px;
+                color: lightgrey;
+                i {
+                    margin-top: 1px;
+                    font-size: x-large;
+                }
+                select {
+                    background-color: rgb(60, 60, 60);
+                    font-size: small;
+                    border-radius: 5px;
+                    color: lightgrey;
+                    outline: none;
+                    #select-header {
+                        color: rgba(255, 255, 255, 0.5);
+                    }
+                }
+            }
+
+            #close-icon {
+                color: lightgrey;
+                margin-bottom: 5px;
+            }
+            #close-icon:hover {
+                color: white;
+                cursor: pointer;
+            }
         }
         #code-text {
             background-color: rgb(30, 30, 30);
-            resize: none;
             color: white;
+            min-height: 50px;
         }
         #code-description {
             background: transparent;
@@ -123,6 +141,24 @@
         }
     }
 }
+
+#submit-button {
+    display: block;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+textarea {
+    resize: none;
+    overflow: hidden;
+    outline: none;
+}
+
+input {
+    outline: none;
+}
+
 
 
 

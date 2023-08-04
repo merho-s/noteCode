@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { UserService } from './services/user.service';
 import { UnauthorizedPageComponent } from './pages/unauthorized-page/unauthorized-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { WaitingAccessComponent } from './components/waiting-access/waiting-access.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
     SignUpComponent,
     UnauthorizedPageComponent,
     NotFoundPageComponent,
+    WaitingAccessComponent,
   ],
   imports: [
     HttpClientModule,

@@ -1,0 +1,10 @@
+<div class="flex-center">
+    <h2>Request access done</h2>
+    <button *ngIf="!(isValid$ | async); else elseBlock" class="nc-simple-button" (click)="checkUserStatus()">Check if your account is whitelisted.</button>
+    <ng-template #elseBlock>
+        <p *ngIf="username">Welcome {{username}}</p>
+        <p>Your account is whitelisted.</p>
+        <button routerLink="/login" class="nc-simple-button">Log In</button>
+    </ng-template>
+</div>
+

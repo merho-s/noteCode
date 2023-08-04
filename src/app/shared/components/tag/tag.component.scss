@@ -8,13 +8,15 @@
     background-color: black;
     height: 25px;
     border-radius: 8px;
-    padding: 0 4px;
+    padding: 0 8px;
     border: none;
     p {
         margin: auto;
+
     }
     i {
         color: rgba(255, 255, 255, 0.5);
+        margin-left: 3px;
     }
     i:hover {
         cursor: pointer;

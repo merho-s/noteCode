@@ -3,9 +3,9 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { CodeSnippet } from 'src/app/core/models/codesnippet.model';
-import { Note } from 'src/app/core/models/note.model';
 import { NoteService } from 'src/app/core/services/note.service';
 import { TagService } from 'src/app/core/services/tag.service';
+import { CodeLanguages } from 'src/app/shared/global_constants/languages.const';
 
 @Component({
   selector: 'app-add-note',
@@ -13,11 +13,12 @@ import { TagService } from 'src/app/core/services/tag.service';
   styleUrls: ['./add-note.component.scss']
 })
 export class AddNoteComponent implements OnInit {
+  codeLanguages: string[] = CodeLanguages.map(l => l.language);
   noteForm!: FormGroup;
   tagSearch!: string;
   allTags!: string[];
   searchedTags!: string[];
-  tagsFound: boolean = false;;
+  tagsFound: boolean = false;
   @Input() newCode!: CodeSnippet;
   
   get codes() {
@@ -36,8 +37,8 @@ export class AddNoteComponent implements OnInit {
   ngOnInit(): void {
     this.tagService.getAllCodetags().subscribe(tags => this.allTags = tags);
     this.noteForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
+      title: [''],
+      description: [''],
       codetags: this.formBuilder.array([]),
       codes: this.formBuilder.array([])
     });
@@ -85,7 +86,14 @@ export class AddNoteComponent implements OnInit {
   }
 
   onSubmitForm() {
-    console.log(this.noteForm.value);
+    for(let c of this.codes.value) {
+      this.onAddTag(c.language);
+    }
+    if (this.noteForm.value.title === '') {
+      if(this.noteForm.value.description !== '')
+        this.noteForm.value.title = this.noteForm.value.description.substring(0, 10); 
+      else this.noteForm.value.title = 'No Title';
+    } 
     this.noteService.addNote(this.noteForm.value).pipe(
       tap(note => {
         this.router.navigateByUrl(`/notes/${note.id}`);

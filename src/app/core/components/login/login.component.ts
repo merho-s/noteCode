@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { NonNullAssert } from '@angular/compiler';
 import { tap } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AdminService } from '../../services/admin.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'login',
@@ -29,7 +26,7 @@ export class LoginComponent {
   onSubmitForm() {
     this.authService.login(this.loginForm.value).pipe(
       tap(() => {
-        this.router.navigateByUrl('/notes');
+        this.router.navigateByUrl('/');
       })
     ).subscribe();
   }

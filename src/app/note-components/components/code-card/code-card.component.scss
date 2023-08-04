@@ -3,13 +3,29 @@
     padding: 5px;
     border-radius: 5px;
     margin-bottom: 10px;
+    p {
+        margin: 0;
+    }
+    #code-header {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        color: lightgrey;
+        margin-bottom: 2px;
+        i {
+            // border: solid 2px lightgrey;
+            border-radius: 2px;
+        }
+        #code-language {
+            font-size: x-small;
+        }
+    }
     pre {
         margin: 0;
         font-size: small;
         font-family: 'Andale Mono', monospace !important;
     }
-    p {
-        margin: 0;
+    #code-description {
         font-size: small;
         font-style: italic;
         color: lightgrey;

@@ -2,7 +2,7 @@
     <form [formGroup]="noteForm">
         <input id="title" type="text" placeholder="Write your title..." formControlName="title">
         <div id="tags-section" formArrayName="codetags">
-            <div class="section-title">
+            <div class="title-section">
                 Tags 
             </div>
             <div id="tags-search">
@@ -14,36 +14,40 @@
                     <app-tag [isClickable]="true" [text]="tag" startAnimation="slide-in-ver" *ngFor="let tag of searchedTags" (onClickEvent)="onAddTag(tag)"></app-tag>
                 </div>
             </div>
-            <!-- ADD CUSTOM TAGS -->
-            <!-- <div class="single-tag" [formGroupName]="i" *ngFor="let tagForm of codetags.controls; let i = index">
-                        <input type="text" placeholder="Tag" formControlName="name">S
-                        <i class="bx bx-x" (click)="onDeleteTag(i)"></i>
-            </div>
-            <i class="bx bx-plus add-item-btn" (click)="onAddTag()"></i> -->
             <div class="tags-flex">
                 <app-tag [isClosable]="true" [text]="tag" startAnimation="slide-in-ver" endAnimation="slide-in-ver-reverse" *ngFor="let tag of codetags.value; let i = index" (onCloseEvent)="onDeleteTag(i)"></app-tag>
             </div>   
         </div>
         <div>
-            <div class="section-description">
+            <div class="title-section">
                 Description
             </div>
-            <textarea id="note-description" placeholder="Write your note description..." formControlName="description"></textarea>
+            <textarea id="note-description" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' placeholder="Write your note description..." formControlName="description"></textarea>
         </div>
         <div id="codes-section" formArrayName="codes">
-            <div class="section-title">
+            <div class="title-section">
                 Code snippets
+                <i id="add-item-btn" class="bx bx-plus" (click)="onAddCode()"></i>
             </div>
-            <div *ngFor="let codeForm of codes.controls; let i = index">
+            <div class="slide-in-hor" *ngFor="let codeForm of codes.controls; let i = index">
                 <div id="single-code" [formGroupName]="i">
-                    <i class="bx bx-x" (click)="onDeleteCode(i)"></i>
-                    <textarea id="code-text" rows="4" placeholder="Write your code..." formControlName="code"></textarea>
-                    <input id="code-description" type="text" placeholder="Write your code description..." formControlName="description">
-                    <input id="language" type="text" placeholder="Write your code language..." formControlName="language">
+                    <div id="code-header">
+                        <div id="code-header-left-part">
+                            <i class="bx bx-code-block"></i>
+                            <select id="code-language" formControlName="language">
+                                <option id="select-header" value="">Language</option>
+                                <option *ngFor="let l of codeLanguages" value="{{l}}">{{l}}</option>
+                            </select>
+                        </div>
+
+                        <i id="close-icon" class="bx bx-x" (click)="onDeleteCode(i)"></i>
+                    </div>
+                    <textarea id="code-text" type="input" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' placeholder="Write your code..." formControlName="code"></textarea>
+                    <textarea id="code-description" type="input" rows=1 oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' placeholder="Write your code description..." formControlName="description"></textarea>
+                    <!-- <input id="language" type="text" placeholder="Write your code language..." formControlName="language"> -->
                 </div>
             </div>
-            <i class="bx bx-plus add-item-btn" (click)="onAddCode()"></i>
         </div>
-        <button class="nc-simple-button" type="submit" (click)="onSubmitForm()" [disabled]="noteForm.invalid">Enregistrer</button>
+        <button id="submit-button" class="nc-simple-button" type="submit" (click)="onSubmitForm()" [disabled]="noteForm.invalid">SAVE</button>
     </form>
 </div>
