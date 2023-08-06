@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Note } from '../models/note.model';
-import { BehaviorSubject, Observable, map, switchMap, tap } from 'rxjs'
+import { BehaviorSubject, Observable, Subject, map, switchMap, tap } from 'rxjs'
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { CodeSnippet } from '../models/codesnippet.model';
@@ -10,7 +10,7 @@ import { CodeSnippet } from '../models/codesnippet.model';
 })
 
 export class NoteService {
-    private userNotes$ = new BehaviorSubject<Note[]>([]);
+    private userNotes$ = new Subject<Note[]>;
 
     constructor(private http: HttpClient) {}
 
