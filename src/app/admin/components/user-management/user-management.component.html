@@ -2,6 +2,6 @@
     <p>{{user.username}}</p>
     <div id="buttons-section">
         <button id="whitelist-button" class="nc-black-button" (click)="onWhitelistWaitingUser(user.id)">Whitelist</button>
-        <button id="refuse-button" class="nc-black-button">Refuse</button>
+        <button id="refuse-button" class="nc-black-button" (click)="onRefuseWaitingUser(user.id)">Refuse</button>
     </div>
 </div>

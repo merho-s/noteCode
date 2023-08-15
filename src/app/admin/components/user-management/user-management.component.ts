@@ -14,12 +14,15 @@ export class UserManagementComponent {
   constructor(private adminService: AdminService) {}
 
   ngOnInit() {
-    this.waitingUsers$ = this.adminService.getAllWaitingUsers();
+    this.waitingUsers$ = this.adminService.waitingUsersObs$;
+    this.adminService.getAllWaitingUsers();
   }
 
   onWhitelistWaitingUser(id: number) {
-    this.adminService.whitelistWaitingUser(id).pipe(
-      tap(() => this.waitingUsers$.subscribe())
-    ).subscribe();
+    this.adminService.whitelistWaitingUser(id);
+  }
+
+  onRefuseWaitingUser(id: number) {
+    this.adminService.deleteUser(id);
   }
 }
