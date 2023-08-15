@@ -11,7 +11,7 @@ export class TagService {
   constructor(private http: HttpClient) { }
 
   getAllCodetags() {
-    return this.http.get<string[]>(environment.apiUrlTags);
+    return this.http.get<string[]>(`${environment.apiUrl}/tags`);
   }
 
 }

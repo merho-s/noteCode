@@ -18,7 +18,7 @@ export class AuthService {
                 private router: Router) {}
 
     login(auth: IAuthentication) {
-        return this.http.post<TokenInfos>(`${environment.apiUrlUser}/login`, auth).pipe(
+        return this.http.post<TokenInfos>(`${environment.apiUrl}/user/login`, auth).pipe(
             tap(response => {
                 localStorage.setItem('token', response.token);
                 localStorage.setItem('username', response.username);
@@ -30,7 +30,7 @@ export class AuthService {
     }
 
     logout() {
-        return this.http.post<boolean>(`${environment.apiUrlUser}/signout`, null).pipe(
+        return this.http.post<boolean>(`${environment.apiUrl}/user/signout`, null).pipe(
             tap(() => {
                 localStorage.removeItem('token');
                 localStorage.removeItem('username');

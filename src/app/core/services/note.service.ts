@@ -19,32 +19,32 @@ export class NoteService {
     }
 
     getAllNotes(): Observable<Note[]> {
-        return this.http.get<Note[]>(`${environment.apiUrlNote}/testget`)
+        return this.http.get<Note[]>(`${environment.apiUrl}/admin/notes`)
     }
 
     getNoteById(id: number): Observable<Note> {
-        return this.http.get<Note>(`${environment.apiUrlNote}/${id}`);
+        return this.http.get<Note>(`${environment.apiUrl}/notes/${id}`);
     }
 
     addNote(note: {title: string, description: string, codes: CodeSnippet[], codetags: string[]}) {
-        return this.http.post<Note>(environment.apiUrlNote, note).pipe(
+        return this.http.post<Note>(`${environment.apiUrl}/notes`, note).pipe(
             tap(() => this.refreshUserNotes())
         );
     }
 
     refreshUserNotes() {
-        return this.http.get<Note[]>(environment.apiUrlNote).pipe(
+        return this.http.get<Note[]>(`${environment.apiUrl}/notes`).pipe(
             tap(notes => this.userNotes$.next(notes))
         ).subscribe();
     }
 
     updateNote(updatedNote: Note, id: number): Observable<Note> {
         return this.getNoteById(id).pipe(
-            switchMap(() => this.http.put<Note>(`${environment.apiUrlNote}/${id}`, updatedNote))
+            switchMap(() => this.http.put<Note>(`${environment.apiUrl}/notes/${id}`, updatedNote))
         )
     }
 
     deleteNote(id: number): Observable<boolean> {
-        return this.http.delete<boolean>(`${environment.apiUrlNote}/${id}`);
+        return this.http.delete<boolean>(`${environment.apiUrl}/notes/${id}`);
     }
 }

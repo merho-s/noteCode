@@ -13,11 +13,11 @@ export class UserService {
     constructor(private http: HttpClient) {}
 
     signUp(user: IAuthentication) {
-        return this.http.post<boolean>(`${environment.apiUrlUser}/signup`, user);
+        return this.http.post<boolean>(`${environment.apiUrl}/user/signup`, user);
     }
 
     requestAccess(user: IAuthentication) {
-        return this.http.post<IUser>(`${environment.apiUrlUser}/requestaccess`, user).pipe(
+        return this.http.post<IUser>(`${environment.apiUrl}/user/requestaccess`, user).pipe(
             tap(res => {
                 if(res)
                     localStorage.setItem('requestAccess', JSON.stringify(res));
@@ -28,7 +28,7 @@ export class UserService {
     checkUserStatus() {
         let waitingUser = localStorage.getItem('requestAccess');
         if(waitingUser) {
-            return this.http.get<boolean>(`${environment.apiUrlUser}/userstatus?userId=${JSON.parse(waitingUser).id}`).pipe(
+            return this.http.get<boolean>(`${environment.apiUrl}/user/userstatus?userId=${JSON.parse(waitingUser).id}`).pipe(
                 tap(res => {
                     if(res)
                         localStorage.removeItem('requestAccess');

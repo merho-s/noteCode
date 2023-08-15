@@ -11,10 +11,10 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   getAllWaitingUsers() {
-    return this.http.get<IUser[]>(`${environment.apiUrlAdmin}/waitingusers`);
+    return this.http.get<IUser[]>(`${environment.apiUrl}/admin/waitingusers`);
   }
 
   whitelistWaitingUser(id: number) {
-    return this.http.post<boolean>(`${environment.apiUrlAdmin}/whitelist/${id}`, null)
+    return this.http.post<boolean>(`${environment.apiUrl}/admin/whitelist/${id}`, null)
   }
 }
