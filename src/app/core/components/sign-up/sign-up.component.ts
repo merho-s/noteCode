@@ -17,7 +17,9 @@ export class SignUpComponent {
   usernameCtrl!: FormControl;
   passwordCtrl!: FormControl;
   confirmPasswordCtrl!: FormControl;
+  displayEmailError!: boolean;
   displayPasswordError!: boolean;
+  displayConfirmPasswordError!: boolean;
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -26,7 +28,7 @@ export class SignUpComponent {
   ngOnInit(): void {
     this.emailCtrl = this.formBuilder.control('', [Validators.required, Validators.email]);
     this.usernameCtrl = this.formBuilder.control('', Validators.required);
-    this.passwordCtrl = this.formBuilder.control('', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[0-9])(?=.*[#$^+=!*()@%&.]).{8,}$')]);
+    this.passwordCtrl = this.formBuilder.control('', Validators.required);
     this.confirmPasswordCtrl = this.formBuilder.control('', [Validators.required, this.sameValidator(this.passwordCtrl)]);
     this.signUpForm = this.formBuilder.group({
       email: this.emailCtrl,

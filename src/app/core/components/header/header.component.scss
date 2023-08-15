@@ -13,16 +13,21 @@
     // box-shadow: lightgrey 4px 10px 20px;
     border-bottom: 1px solid rgb(150, 150, 150);
     z-index: 999;
-    h1:hover {
+    #main-title {
+        display:flex;
+        align-items: center;
         cursor: pointer;
-    }
-    a {
-        font-size: small;
+        img {
+            height: 40px;
+        }
     }
     .user-section {
         display: flex;
         align-items: center;
         gap: 15px;
+        a {
+            font-size: small;
+        }
     }
 }
 

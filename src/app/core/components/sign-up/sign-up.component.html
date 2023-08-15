@@ -3,7 +3,13 @@
     <form [formGroup]="signUpForm" class="flex-column">
         <div class="input-form flex-column">
             <label for="email">Email</label>
-            <input [ngClass]="{ 'invalid-input' : emailCtrl.invalid }" id="email" type="text" [formControl]="emailCtrl">
+            <input 
+                [ngClass]="{ 'invalid-input' : emailCtrl.invalid && displayEmailError }" 
+                (input)="displayEmailError = true" 
+                id="email" 
+                type="text" 
+                [formControl]="emailCtrl">
+            <p *ngIf="emailCtrl.invalid && displayEmailError" class="error-message">Incorrect email format.</p>
         </div>
         <div class="input-form flex-column">
             <label for="username">Username</label>
@@ -11,20 +17,22 @@
         </div>
         <div class="input-form flex-column">
             <label for="password">Password</label>
-            <input [ngClass]="{ 'invalid-input': passwordCtrl.invalid && displayPasswordError }" id="password" type="password" (blur)="displayPasswordError = true" [formControl]="passwordCtrl">
-            <p *ngIf="passwordCtrl.invalid && displayPasswordError" class="error-message">
-                Pasword must contain:<br>
-                    at least 8 characters<br>
-                    an uppercase<br>
-                    a lowercase<br>
-                    a number<br>
-                    a special character (#$^+=!*()@%&.)
-            </p>
+            <input 
+                id="password" 
+                type="password" 
+                [formControl]="passwordCtrl">
+            <!-- <p *ngIf="passwordCtrl.invalid" class="error-message">
+                Pasword must contain at least 8 characters, an uppercase (A-Z), a lowercase (a-z), a number (0-9) and a special character (#$^+=!*()@%&.).
+            </p> -->
         </div>
         <div class="input-form flex-column">
             <label for="confirm-password">Confirm Password</label>
-            <input [ngClass]="{ 'invalid-input' : confirmPasswordCtrl.invalid }" id="confirm-password" type="password" [formControl]="confirmPasswordCtrl">
-            <p *ngIf="confirmPasswordCtrl.invalid" class="error-message">It's not the same password.</p>
+            <input 
+                [ngClass]="{ 'invalid-input' : confirmPasswordCtrl.invalid && displayConfirmPasswordError }" id="confirm-password" 
+                type="password" 
+                (input)="displayConfirmPasswordError = true" 
+                [formControl]="confirmPasswordCtrl">
+            <p *ngIf="confirmPasswordCtrl.invalid && displayConfirmPasswordError" class="error-message">It's not the same password.</p>
         </div>
         <button class="nc-simple-button" type ="submit" (click)="onSubmitForm()" [disabled]="signUpForm.invalid">Ask access</button>
     </form>

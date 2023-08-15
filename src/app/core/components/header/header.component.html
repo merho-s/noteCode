@@ -1,5 +1,8 @@
 <div id="header-content">
-    <h1 routerLink="/">.noteCode</h1>
+    <div id="main-title" routerLink="/">
+        <h1>.noteCode</h1>
+        <img src="assets/noteCode_logo.png"/>
+    </div>
     <div class="user-section">
         <a *ngIf="(isAdmin$ | async) && (isLoggedIn$ | async)" routerLink="admin">Admin Panel</a>
         <button *ngIf="isLoggedIn$ | async" class="nc-simple-button" (click)="onLogout()">Log out</button>
