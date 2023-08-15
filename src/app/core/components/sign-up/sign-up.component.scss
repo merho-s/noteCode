@@ -29,3 +29,17 @@ a:hover {
     color: black;
     cursor: pointer;
 }
+
+.error-message {
+    margin: 0;
+    color: red;
+    font-size: small;
+}
+
+.invalid-input {
+    border: solid 1px red;
+    border-radius: 3px;
+}
+.invalid-input:focus {
+    outline: solid 2px red;
+}

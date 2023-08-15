@@ -3,7 +3,7 @@
     <form [formGroup]="signUpForm" class="flex-column">
         <div class="input-form flex-column">
             <label for="email">Email</label>
-            <input id="email" type="text" [formControl]="emailCtrl">
+            <input [ngClass]="{ 'invalid-input' : emailCtrl.invalid }" id="email" type="text" [formControl]="emailCtrl">
         </div>
         <div class="input-form flex-column">
             <label for="username">Username</label>
@@ -11,11 +11,20 @@
         </div>
         <div class="input-form flex-column">
             <label for="password">Password</label>
-            <input id="password" type="password" [formControl]="passwordCtrl">
+            <input [ngClass]="{ 'invalid-input': passwordCtrl.invalid && displayPasswordError }" id="password" type="password" (blur)="displayPasswordError = true" [formControl]="passwordCtrl">
+            <p *ngIf="passwordCtrl.invalid && displayPasswordError" class="error-message">
+                Pasword must contain:<br>
+                    at least 8 characters<br>
+                    an uppercase<br>
+                    a lowercase<br>
+                    a number<br>
+                    a special character (#$^+=!*()@%&.)
+            </p>
         </div>
         <div class="input-form flex-column">
             <label for="confirm-password">Confirm Password</label>
-            <input id="confirm-password" type="password" [formControl]="confirmPasswordCtrl">
+            <input [ngClass]="{ 'invalid-input' : confirmPasswordCtrl.invalid }" id="confirm-password" type="password" [formControl]="confirmPasswordCtrl">
+            <p *ngIf="confirmPasswordCtrl.invalid" class="error-message">It's not the same password.</p>
         </div>
         <button class="nc-simple-button" type ="submit" (click)="onSubmitForm()" [disabled]="signUpForm.invalid">Ask access</button>
     </form>
