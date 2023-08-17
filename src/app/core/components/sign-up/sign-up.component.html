@@ -18,19 +18,22 @@
         <div class="input-form flex-column">
             <label for="password">Password</label>
             <input 
+                [ngClass]="{ 'invalid-input' : passwordCtrl.invalid && displayPasswordError }"
+                (input)="displayPasswordError = true"
                 id="password" 
-                type="password" 
+                type="password"
                 [formControl]="passwordCtrl">
-            <!-- <p *ngIf="passwordCtrl.invalid" class="error-message">
-                Pasword must contain at least 8 characters, an uppercase (A-Z), a lowercase (a-z), a number (0-9) and a special character (#$^+=!*()@%&.).
-            </p> -->
+            <p *ngIf="passwordCtrl.invalid && displayPasswordError" class="error-message">
+                Pasword must contain at least 8 characters, an uppercase (A-Z), a lowercase (a-z), a number (0-9) and a special character (@$!%*?&_.-).
+            </p>
         </div>
         <div class="input-form flex-column">
             <label for="confirm-password">Confirm Password</label>
             <input 
-                [ngClass]="{ 'invalid-input' : confirmPasswordCtrl.invalid && displayConfirmPasswordError }" id="confirm-password" 
-                type="password" 
+                [ngClass]="{ 'invalid-input' : confirmPasswordCtrl.invalid && displayConfirmPasswordError }" 
                 (input)="displayConfirmPasswordError = true" 
+                id="confirm-password"
+                type="password" 
                 [formControl]="confirmPasswordCtrl">
             <p *ngIf="confirmPasswordCtrl.invalid && displayConfirmPasswordError" class="error-message">It's not the same password.</p>
         </div>
