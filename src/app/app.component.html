@@ -1,15 +1,16 @@
-<p id="version-annotation">Preview Build</p>
-<div id="header">
-    <app-header></app-header>
-</div>
-<div id="sidebar-content">
-    <div id="sidebar">
-        <app-notes-list *ngIf="isLoggedIn$ | async"></app-notes-list>
+<div id="main-container">
+    <div id="header">
+        <p id="version-annotation">Preview Build</p>
+        <app-header></app-header>
     </div>
-    <div id="content" [ngClass]="{ 'content-left-margin': isLoggedIn$ | async }">
+    <div id="sidebar" *ngIf="isLoggedIn$ | async">
+        <app-notes-list></app-notes-list>
+    </div>
+    <div id="content">
         <router-outlet></router-outlet>
     </div>
 </div>
+
 
     
 

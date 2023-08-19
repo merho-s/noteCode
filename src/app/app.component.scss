@@ -1,28 +1,28 @@
-#sidebar-content {
+#main-container {
     display: flex;
-}
-
-#sidebar {
-    padding-top: 60px;
-    position: fixed;
-    // overflow-y: auto;
-}
-
-.content-left-margin {
-    margin-left: 260px;
-}
-
-#content {
-    padding: 70px 5%;
-    width: 100%;
-    overflow-x: hidden;
-}
-
-#version-annotation {
-    position: absolute;
-    margin-top: 40px;
-    margin-left: 5px;
-    color: rgb(165, 165, 165);
-    font-size: small;
-    z-index: 1000;
+    flex-wrap: wrap;
+    height: 100%;
+    #header {
+        height: 60px;
+        width: 100vw;
+        #version-annotation {
+            position: fixed;
+            margin-top: 40px;
+            margin-left: 5px;
+            color: rgb(165, 165, 165);
+            font-size: small;
+            z-index: 1000;
+        }
+    }
+    #sidebar {
+        height: calc(100vh - 60px);
+        width: 250px;
+    }
+    #content {
+        flex: 1;
+        padding: 1% 5%;
+        height: calc(100vh - 60px);
+        overflow-x: hidden;
+        box-sizing: border-box;
+    }
 }

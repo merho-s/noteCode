@@ -1,18 +1,12 @@
 #header-content {
     display: flex;
     align-items: center;
+    height: 100%;
     box-sizing: border-box;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
     background-color: white;
     justify-content: space-between;
     padding: 5px;
-    // box-shadow: lightgrey 4px 10px 20px;
     border-bottom: 1px solid rgb(150, 150, 150);
-    z-index: 999;
     #main-title {
         display:flex;
         align-items: center;
