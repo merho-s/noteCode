@@ -3,14 +3,19 @@
 }
 
 #sidebar {
-    margin-top: 60px;
+    padding-top: 60px;
+    position: fixed;
+    // overflow-y: auto;
+}
+
+.content-left-margin {
+    margin-left: 260px;
 }
 
 #content {
-    margin-top: 60px;
-    padding: 15px 5%;
+    padding: 70px 5%;
     width: 100%;
-    overflow: auto;
+    overflow-x: hidden;
 }
 
 #version-annotation {

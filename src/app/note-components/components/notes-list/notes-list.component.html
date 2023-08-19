@@ -6,6 +6,8 @@
         </div>
         <i id="add-note-btn" class='bx bx-plus' (click)="onAddNote()"></i>
     </div>
-    <app-note-thumbnail *ngFor="let singleNote of notes$ | async; trackBy: noteTrackBy" [note]="singleNote"></app-note-thumbnail>
+    <div id="notes-list">
+        <app-note-thumbnail *ngFor="let singleNote of notes$ | async; trackBy: noteTrackBy" [note]="singleNote"></app-note-thumbnail>
+    </div>
 </div>
 

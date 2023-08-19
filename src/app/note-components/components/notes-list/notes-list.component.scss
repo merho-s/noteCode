@@ -5,31 +5,31 @@
     height: 100vh;
     width: 250px;
     z-index: 999;
-    overflow: auto;
+    #notes-list-header {
+        display: flex;
+        justify-content: space-between;
+        height: 30px;
+        margin-bottom: 15px;
+        align-items: center;
+        #notes-list-header-left-part {
+            display: flex;
+            align-items: center;
+        }
+        p {
+            font-weight: bold;
+        }
+        #add-note-btn {
+            font-size: xx-large;
+        }
+        #add-note-btn:hover {
+            cursor: pointer;
+            background-color: black;
+            border-radius: 5px;
+            color: white;
+        }
+    }
 }
 
-#notes-list-header {
-    display: flex;
-    justify-content: space-between;
-    height: 30px;
-    margin-bottom: 15px;
-    align-items: center;
-    #notes-list-header-left-part {
-        display: flex;
-        align-items: center;
-    }
-    p {
-        font-weight: bold;
-    }
-    #add-note-btn {
-        font-size: xx-large;
-    }
-    #add-note-btn:hover {
-        cursor: pointer;
-        background-color: black;
-        border-radius: 5px;
-        color: white;
-    }
-}
+
 
 

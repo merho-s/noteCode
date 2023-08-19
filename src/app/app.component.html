@@ -6,7 +6,7 @@
     <div id="sidebar">
         <app-notes-list *ngIf="isLoggedIn$ | async"></app-notes-list>
     </div>
-    <div id="content">
+    <div id="content" [ngClass]="{ 'content-left-margin': isLoggedIn$ | async }">
         <router-outlet></router-outlet>
     </div>
 </div>
