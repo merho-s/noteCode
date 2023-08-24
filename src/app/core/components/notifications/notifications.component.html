@@ -1,0 +1,4 @@
+<div id="notifications-area">
+    <app-popup-card [autoCloseable]="popup.autoCloseable" [type]="popup.type" (onCloseEvent)="onCloseNotification(i)" *ngFor="let popup of popupsObs$ | async; let i = index;">{{popup.message}}</app-popup-card>
+</div>
+

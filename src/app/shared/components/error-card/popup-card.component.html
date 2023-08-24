@@ -1,0 +1,13 @@
+<div
+    id="error-card" 
+    class="flex-row slide-in-hor" 
+    [ngClass]="{ 'error-background': type === 'error', 
+                'success-background': type === 'success', 
+                'info-background': type === 'info' }" 
+    (animationend)="onCloseAnimationEnd()"
+>
+    <i *ngIf="!autoCloseable" class="bx bx-x-circle" (click)="onClose()"></i>
+    <div id="error-content">
+        <ng-content></ng-content>
+    </div>
+</div>

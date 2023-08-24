@@ -12,6 +12,7 @@ import { UserService } from './services/user.service';
 import { UnauthorizedPageComponent } from './pages/unauthorized-page/unauthorized-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { WaitingAccessComponent } from './components/waiting-access/waiting-access.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { WaitingAccessComponent } from './components/waiting-access/waiting-acce
     UnauthorizedPageComponent,
     NotFoundPageComponent,
     WaitingAccessComponent,
+    NotificationsComponent,
   ],
   imports: [
     HttpClientModule,
@@ -31,7 +33,8 @@ import { WaitingAccessComponent } from './components/waiting-access/waiting-acce
     RouterModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    NotificationsComponent
   ],
   providers: [
     httpInterceptorProviders,

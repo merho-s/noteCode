@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TagComponent } from './components/tag/tag.component';
 import { TextAnimationDirective } from './directives/text-animation.directive';
+import { PopupCardComponent } from './components/error-card/popup-card.component';
 
 
 
@@ -10,6 +11,7 @@ import { TextAnimationDirective } from './directives/text-animation.directive';
   declarations: [
     TagComponent,
     TextAnimationDirective,
+    PopupCardComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +23,7 @@ import { TextAnimationDirective } from './directives/text-animation.directive';
     ReactiveFormsModule,
     FormsModule,
     TagComponent,
+    PopupCardComponent,
     TextAnimationDirective
   ]
 })

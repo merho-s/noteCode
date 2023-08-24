@@ -24,5 +24,10 @@
         height: calc(100vh - 60px);
         overflow-x: hidden;
         box-sizing: border-box;
+        app-notifications {
+            z-index: 1000;
+            position: absolute;
+            right: 20%;
+        }
     }
 }
