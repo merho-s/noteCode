@@ -87,7 +87,11 @@ export class AddNoteComponent implements OnInit {
 
   onSubmitForm() {
     for(let c of this.codes.value) {
-      this.onAddTag(c.language);
+      if (c.language !== 'Plain Text') {
+        this.onAddTag(c.language);
+        console.log('plaon');
+      }
+
     }
     if (this.noteForm.value.title === '') {
       if(this.noteForm.value.description !== '')
