@@ -1,13 +1,19 @@
 <div
-    id="error-card" 
-    class="flex-row slide-in-hor" 
+    id="popup-card" 
+    class="slide-in-hor-left" 
     [ngClass]="{ 'error-background': type === 'error', 
                 'success-background': type === 'success', 
                 'info-background': type === 'info' }" 
     (animationend)="onCloseAnimationEnd()"
 >
-    <i *ngIf="!autoCloseable" class="bx bx-x-circle" (click)="onClose()"></i>
+    <div id="popup-header">
+        <p>{{ type | titlecase }}</p>
+        <i class="bx bx-x" (click)="onClose()"></i>
+    </div>
     <div id="error-content">
         <ng-content></ng-content>
+    </div>
+    <div *ngIf="autoCloseable" id="bar-container">
+        <div id="progress-bar"></div>
     </div>
 </div>

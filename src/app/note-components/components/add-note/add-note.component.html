@@ -1,4 +1,4 @@
-<div class="form-card slide-in-hor">
+<div class="form-card stretch-slide-in-hor">
     <form [formGroup]="noteForm">
         <input id="title" type="text" placeholder="Write your title..." formControlName="title">
         <div id="tags-section" formArrayName="codetags">
@@ -29,7 +29,7 @@
                 Code snippets
                 <i id="add-item-btn" class="bx bx-plus" (click)="onAddCode()"></i>
             </div>
-            <div class="slide-in-hor" *ngFor="let codeForm of codes.controls; let i = index">
+            <div class="stretch-slide-in-hor" *ngFor="let codeForm of codes.controls; let i = index">
                 <div id="single-code" [formGroupName]="i">
                     <div id="code-header">
                         <div id="code-header-left-part">

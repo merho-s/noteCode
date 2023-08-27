@@ -17,11 +17,26 @@ export class ErrorCatchingInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        this.popupService.pushPopup({
-          message: error.error,
-          type: 'error',
-          autoCloseable: true
-        })
+        if (typeof(error.error) === 'string') {
+          this.popupService.pushPopup({
+            message: error.error,
+            type: 'error',
+            autoCloseable: true
+          })
+        } else if (error.status >= 500) {
+          this.popupService.pushPopup({
+            message: 'Servor error.',
+            type: 'error',
+            autoCloseable: true
+          })
+        } else {
+          this.popupService.pushPopup({
+            message: error.message,
+            type: 'error',
+            autoCloseable: true
+          })
+        }
+
         return throwError(() => error);
       })
     );

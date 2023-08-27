@@ -91,7 +91,6 @@ export class AddNoteComponent implements OnInit {
         this.onAddTag(c.language);
         console.log('plaon');
       }
-
     }
     if (this.noteForm.value.title === '') {
       if(this.noteForm.value.description !== '')

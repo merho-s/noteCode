@@ -1,0 +1,75 @@
+#popup-card {
+    border-radius: 10px;
+    gap: 10px;
+    margin: auto;
+    max-width: 400px;
+    padding: 10px;
+    justify-content: space-between;
+    z-index: 1000;
+    #popup-header {
+        margin-bottom: 5px;
+        p {
+            margin: 0;
+            font-weight: bold;
+        }
+        i {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20px;
+            width: 20px;
+            position: absolute;
+            margin: auto;
+            border-radius: 50%;
+            top: 5px;
+            right: 5px;
+            font-size: x-large;
+            cursor: pointer;
+        }
+        i:hover {
+            background-color: white;
+            
+        }
+    }
+
+    #error-content {
+        font-size: small;
+    }
+
+    #bar-container {
+        position: absolute;
+        bottom: 2px;
+        width: calc(100% - 20px);
+        background-color: transparent;
+        border-radius: 10px;
+        height: 2px;
+        #progress-bar {
+            width: 0;
+            height: 100%;
+            background-color: rgb(253, 102, 102);
+            border-radius: inherit;
+            animation: progressBarAnimation 4.9s ease forwards;
+        }
+    }
+}
+
+.error-background {
+    background-color: rgba(253, 232, 231, 0.5);
+    backdrop-filter: blur(6px);
+    color: rgb(253, 102, 102);
+    box-shadow: 1px 1px 2px rgb(253, 102, 102);
+}
+
+.success-background {
+    background-color: rgba(229, 248, 240, 0.5);
+    backdrop-filter: blur(6px);
+    color: rgb(50, 176, 136);
+    box-shadow: 1px 1px 2px rgb(50, 176, 136);
+}
+
+.info-background {
+    background-color: rgba(37, 99, 235, 0.5);
+    backdrop-filter: blur(6px);
+    color: rgb(37, 99, 235);
+    box-shadow: 1px 1px 2px rgb(37, 99, 235);
+}

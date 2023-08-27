@@ -6,7 +6,7 @@
         height: 60px;
         width: 100vw;
         #version-annotation {
-            position: fixed;
+            position: absolute;
             margin-top: 40px;
             margin-left: 5px;
             color: rgb(165, 165, 165);
@@ -25,9 +25,9 @@
         overflow-x: hidden;
         box-sizing: border-box;
         app-notifications {
+            right: 5%;
             z-index: 1000;
-            position: absolute;
-            right: 20%;
+            position: fixed;
         }
     }
 }
