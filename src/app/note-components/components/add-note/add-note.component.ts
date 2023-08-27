@@ -3,6 +3,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { CodeSnippet } from 'src/app/core/models/codesnippet.model';
+import { Note } from 'src/app/core/models/note.model';
+import { HighlightService } from 'src/app/core/services/highlight.service';
 import { NoteService } from 'src/app/core/services/note.service';
 import { TagService } from 'src/app/core/services/tag.service';
 import { CODES_LANGUAGES } from 'src/app/shared/global_constants/languages.const';
@@ -13,13 +15,15 @@ import { CODES_LANGUAGES } from 'src/app/shared/global_constants/languages.const
   styleUrls: ['./add-note.component.scss']
 })
 export class AddNoteComponent implements OnInit {
+  @Input() inputMode: boolean = true;
+  @Input() singleNote!: Note;
   codeLanguages: string[] = CODES_LANGUAGES.map(l => l.language);
   noteForm!: FormGroup;
   tagSearch!: string;
   allTags!: string[];
   searchedTags!: string[];
   tagsFound: boolean = false;
-  @Input() newCode!: CodeSnippet;
+  prismLanguage!: string;
   
   get codes() {
     return this.noteForm.get('codes') as FormArray;
@@ -32,16 +36,31 @@ export class AddNoteComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private noteService: NoteService,
-              private tagService: TagService) {}
+              private tagService: TagService,
+              private highlightService: HighlightService) {}
 
   ngOnInit(): void {
+
+
     this.tagService.getAllCodetags().subscribe(tags => this.allTags = tags);
     this.noteForm = this.formBuilder.group({
-      title: [''],
-      description: [''],
-      codetags: this.formBuilder.array([]),
-      codes: this.formBuilder.array([])
+      title: [this.singleNote.title],
+      description: [this.singleNote.description],
+      codetags: this.formBuilder.array(this.singleNote.codetags ? this.singleNote.codetags : []),
+      codes: this.formBuilder.array(this.singleNote.codes ? this.singleNote.codes : [])
     });
+  }
+
+  ngAfterViewChecked() {
+    this.highlightService.highlight();
+  }
+
+  getPrismAliasLanguage(language: string) : string {
+    console.log('prism');
+    let codeLanguage = CODES_LANGUAGES.find(l => l.language === language);
+    if (codeLanguage)
+      return codeLanguage.alias;
+    return '';
   }
 
   onAddCode() {

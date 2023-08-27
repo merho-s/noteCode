@@ -1,11 +1,11 @@
 <div class="form-card stretch-slide-in-hor">
     <form [formGroup]="noteForm">
-        <input id="title" type="text" placeholder="Write your title..." formControlName="title">
+        <input id="title" type="text" placeholder="Write your title..."  formControlName="title">
         <div id="tags-section" formArrayName="codetags">
             <div class="title-section">
                 Tags 
             </div>
-            <div id="tags-search">
+            <div *ngIf="inputMode" id="tags-search">
                 <div id="search-bar">
                     <i class="bx bx-search"></i>
                     <input type="text" placeholder="Search tag..." (input)="onSearchTagTyping($event)">
@@ -42,7 +42,10 @@
 
                         <i id="close-icon" class="bx bx-x" (click)="onDeleteCode(i)"></i>
                     </div>
-                    <textarea id="code-text" type="input" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' placeholder="Write your code..." formControlName="code"></textarea>
+                    <textarea *ngIf="inputMode; notInputElseBlock" id="code-text" type="input" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' placeholder="Write your code..." formControlName="code"></textarea>
+                    <ng-template #notInputElseBlock>
+                        <pre [ngClass]="'language-' + getPrismAliasLanguage(codeForm.value.language)"><code>{{ codeForm.value.code }}</code></pre>
+                    </ng-template>
                     <div id="code-description">
                         <i class="bx bx-comment-detail"></i>
                         <textarea type="input" rows=1 oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' placeholder="Write your code description..." formControlName="description"></textarea>
