@@ -20,7 +20,7 @@
     }
     #content {
         flex: 1;
-        padding: 1% 5%;
+        padding: 1% 13%;
         height: calc(100vh - 60px);
         overflow-x: hidden;
         box-sizing: border-box;
@@ -30,4 +30,17 @@
             position: fixed;
         }
     }
+
+    @media (max-width: 1280px) {
+        #content {
+            padding: 1% 8%;
+        }
+    }
+    
+    @media (max-width: 1024px) {
+        #content {
+            padding: 1% 5%;
+        }
+    }
+
 }

@@ -15,7 +15,15 @@
     cursor: pointer;
 }
 
-.title-section {
+.close-icon {
+    margin-bottom: 5px;
+}
+.close-icon:hover {
+    color: rgb(150, 150, 150);
+    cursor: pointer;
+}
+
+.section-title {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -34,7 +42,9 @@
         #search-bar {
             display: flex;
             align-items: center;
+            // box-sizing: border-box;
             input {
+                flex: 1;
                 border: none;
             }
         }
@@ -45,33 +55,6 @@
         flex-wrap: wrap;
         gap: 3px;
         align-items: center;
-        // .single-tag {
-        //     display: flex ;
-        //     align-items: center;
-        //     font-size: small;
-        //     color: white;
-        //     width: 75px;
-        //     background-color: black;
-        //     height: 20px;
-        //     border-radius: 10px;
-        //     padding: 2px;
-        //     border: none;
-        //     font-size: small;
-        //     input {
-        //         border: none;
-        //         max-width: 70%;
-        //         background-color: inherit;
-        //         border-radius: inherit;
-        //         color: white;
-        //         text-align: center;
-        //     }
-        //     i {
-        //         color: white;
-        //     }
-        //     i:hover {
-        //         cursor:pointer;
-        //     }
-        // }
     }
 }
 
@@ -116,14 +99,21 @@
                     }
                 }
             }
-
-            #close-icon {
-                color: lightgrey;
-                margin-bottom: 5px;
-            }
-            #close-icon:hover {
+        }
+        #code-editing-card {
+            padding: 0;
+            border-radius: 0.3em;
+            background-color: rgb(40, 40, 40);
+            i {
+                margin-left: calc(100% - 60px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 25px;
+                width: 60px;
+                background-color: rgb(0, 193, 0);
                 color: white;
-                cursor: pointer;
+                border-bottom-right-radius: 5px;
             }
         }
         #code-text {
@@ -140,13 +130,13 @@
             color: lightgrey;
             margin-bottom: 0;
             i {
-                margin-top: 2px;
+                margin-top: 4px;
             }
-            textarea {
-                width: 100%;
+            app-autoresizeable-textarea {
+                width: 100%; 
                 border: none;
                 background-color: inherit;
-                font-size: medium;
+                font-size: small;
                 color: inherit;
             }
         }
@@ -160,19 +150,12 @@
     margin-right: auto;
 }
 
-textarea {
-    resize: none;
-    overflow: hidden;
-    outline: none;
-}
+// textarea {
+//     resize: none;
+//     overflow: hidden;
+//     outline: none;
+// }
 
 input {
     outline: none;
 }
-
-
-
-
-
-
-

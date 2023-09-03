@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TagComponent } from './components/tag/tag.component';
 import { TextAnimationDirective } from './directives/text-animation.directive';
 import { PopupCardComponent } from './components/popup-card/popup-card.component';
+import { AutoresizeableTextareaComponent } from './components/autoresizeable-textarea/autoresizeable-textarea.component';
 
 
 
@@ -12,6 +13,7 @@ import { PopupCardComponent } from './components/popup-card/popup-card.component
     TagComponent,
     TextAnimationDirective,
     PopupCardComponent,
+    AutoresizeableTextareaComponent,
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { PopupCardComponent } from './components/popup-card/popup-card.component
     FormsModule,
     TagComponent,
     PopupCardComponent,
-    TextAnimationDirective
+    TextAnimationDirective,
+    AutoresizeableTextareaComponent
   ]
 })
 export class SharedModule { }

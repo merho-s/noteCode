@@ -5,6 +5,6 @@
     </div>
     <p id="note-description">{{ note.description }}</p>
     <app-code-card *ngFor="let singleCode of note.codes" [singleCode]="singleCode"></app-code-card> -->
-    <app-add-note [singleNote]="note" [inputMode]="false"></app-add-note>
+    <app-add-note [singleNote]="note" [codesEditingModes]="codesEditingModes" [descriptionEditingMode]="false" [tagsEditingMode]="false"></app-add-note>
 </div>
 

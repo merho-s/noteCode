@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { CodeSnippet } from 'src/app/core/models/codesnippet.model';
@@ -15,9 +15,11 @@ import { CODES_LANGUAGES } from 'src/app/shared/global_constants/languages.const
   styleUrls: ['./add-note.component.scss']
 })
 export class AddNoteComponent implements OnInit {
-  @Input() inputMode: boolean = true;
+  @Input() tagsEditingMode: boolean = true;
+  @Input() descriptionEditingMode: boolean = true;
+  @Input() codesEditingModes: boolean[] = [];
   @Input() singleNote!: Note;
-  codeLanguages: string[] = CODES_LANGUAGES.map(l => l.language);
+  codeLanguages = CODES_LANGUAGES;
   noteForm!: FormGroup;
   tagSearch!: string;
   allTags!: string[];
@@ -37,37 +39,59 @@ export class AddNoteComponent implements OnInit {
               private router: Router,
               private noteService: NoteService,
               private tagService: TagService,
+              private elementRef: ElementRef,
+              private renderer: Renderer2,
               private highlightService: HighlightService) {}
 
   ngOnInit(): void {
-
-
     this.tagService.getAllCodetags().subscribe(tags => this.allTags = tags);
-    this.noteForm = this.formBuilder.group({
-      title: [this.singleNote.title],
-      description: [this.singleNote.description],
-      codetags: this.formBuilder.array(this.singleNote.codetags ? this.singleNote.codetags : []),
-      codes: this.formBuilder.array(this.singleNote.codes ? this.singleNote.codes : [])
-    });
+    if (this.singleNote) {
+      this.noteForm = this.formBuilder.group({
+        title: [this.singleNote.title],
+        description: [this.singleNote.description],
+        codetags: this.formBuilder.array(this.singleNote.codetags ? this.singleNote.codetags : []),
+        codes: this.formBuilder.array([])
+      });
+      if(this.singleNote.codes) {
+        for(let i = 0; i < this.singleNote.codes.length; i++) {
+          this.codesEditingModes.push(false);
+          this.onAddCode(this.singleNote.codes[i]);
+        }
+      }
+    } else {
+      this.noteForm = this.formBuilder.group({
+        title: [''],
+        description: [''],
+        codetags: this.formBuilder.array([]),
+        codes: this.formBuilder.array([])
+      });
+    }
+ 
   }
 
-  ngAfterViewChecked() {
+  // ngAfterViewInit() {
+  //   let allTextareas = this.elementRef.nativeElement.querySelectorAll('textarea');
+  //   allTextareas.forEach((textarea: HTMLTextAreaElement) => {
+  //     this.autoResizeTextarea(textarea)
+  //   });
+  // }
+
+  highlight() {
     this.highlightService.highlight();
   }
 
-  getPrismAliasLanguage(language: string) : string {
-    console.log('prism');
-    let codeLanguage = CODES_LANGUAGES.find(l => l.language === language);
-    if (codeLanguage)
-      return codeLanguage.alias;
-    return '';
+  autoResizeTextarea(textarea: HTMLTextAreaElement) {
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+    // this.renderer.setStyle(element, 'height', 0);
+    // this.renderer.setStyle(element, 'height', element.scrollHeight);
   }
 
-  onAddCode() {
+  onAddCode(code?: CodeSnippet) {
     const codeForm = this.formBuilder.group({
-      code: ['', Validators.required],
-      description: [''],
-      language: ['', Validators.required]
+      code: [code ? code.code : '', Validators.required],
+      description: [code ? code.description : ''],
+      language: [code ? code.language : '', Validators.required]
     });
     this.codes.push(codeForm);
   }
@@ -77,11 +101,6 @@ export class AddNoteComponent implements OnInit {
   }
 
   onAddTag(tagName: string) {
-    //THIS IS THE OLD TAG ADD METHOD
-    // const tagForm = this.formBuilder.group({
-    //   name: [tagName, Validators.required]
-    // });
-    // const tagCtrl = [tagName, Validators.required]
     let codetagsArray: string[] = this.codetags.value;
     if(!codetagsArray.find(tag => tag.toLowerCase() === tagName.toLowerCase())) {
       this.codetags.push(this.formBuilder.control(tagName));
@@ -104,11 +123,26 @@ export class AddNoteComponent implements OnInit {
     } else this.tagsFound = false;
   }
 
+  enableTagsEditingMode() {
+    this.tagsEditingMode = true;
+  }
+
+  disableTagsEditingMode() {
+    this.tagsEditingMode = false;
+  }
+
+  enableCodeEditingMode(index: number) {
+    this.codesEditingModes[index] = true;
+  }
+
+  disableCodeEditingMode(index: number) {
+    this.codesEditingModes[index] = false;
+  }
+
   onSubmitForm() {
     for(let c of this.codes.value) {
       if (c.language !== 'Plain Text') {
         this.onAddTag(c.language);
-        console.log('plaon');
       }
     }
     if (this.noteForm.value.title === '') {

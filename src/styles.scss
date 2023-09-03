@@ -10,12 +10,13 @@ body {
     margin: 0;
 }
 
-button, input, select {
+button, input, select, textarea {
     font-family: inherit;
 }
 
 ::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -25,6 +26,10 @@ button, input, select {
 ::-webkit-scrollbar-thumb {
     background: rgb(75, 75, 75);
     border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(0, 0, 0);
 }
 
 .flex-row {

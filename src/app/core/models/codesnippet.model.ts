@@ -1,5 +1,5 @@
-export class CodeSnippet {
-    code!: string;
-    description!: string | null;
-    language!: string;
+export interface CodeSnippet {
+    code: string;
+    description: string;
+    language: string;
 } 

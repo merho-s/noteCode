@@ -1,11 +1,11 @@
 <div id="code-card">
-    <div id="code-header">
+    <!-- <div id="code-header">
         <i class="bx bx-code-block"></i>
         <p id="code-language">{{ singleCode.language }}</p>
-    </div>
-    <pre [ngClass]="'language-' + prismLanguage" class="line-numbers"><code>{{ singleCode.code }}</code></pre>
-    <div *ngIf="singleCode.description" id="code-description">
+    </div> -->
+    <pre [ngClass]="'language-' + prismLanguage"><code>{{ singleCode.code }}</code></pre>
+    <!-- <div *ngIf="singleCode.description" id="code-description">
         <i class="bx bx-comment-detail"></i>
         <p>{{ singleCode.description }}</p>
-    </div>
+    </div> -->
 </div>
