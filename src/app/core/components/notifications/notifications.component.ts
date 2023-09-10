@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { Popup } from '../../models/popup.model';
+import { Popup } from '../../models/popup.interface';
 import { PopupService } from '../../services/popup.service';
 
 @Component({

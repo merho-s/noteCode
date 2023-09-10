@@ -1,10 +1,4 @@
-<div class="stretch-slide-in-hor" *ngIf="note$ | async as note">
-    <!-- <h2>{{ note.title }}</h2>
-    <div id="tags-section">
-        <app-tag *ngFor="let tag of note.codetags" [text]="tag"></app-tag>
-    </div>
-    <p id="note-description">{{ note.description }}</p>
-    <app-code-card *ngFor="let singleCode of note.codes" [singleCode]="singleCode"></app-code-card> -->
-    <app-add-note [singleNote]="note" [codesEditingModes]="codesEditingModes" [descriptionEditingMode]="false" [tagsEditingMode]="false"></app-add-note>
+<div class="stretch-slide-in-toleft-hor" *ngIf="note$ | async as note">
+    <app-add-note [singleNote]="note" [descriptionEditingMode]="false" [tagsEditingMode]="tagsEditingMode"></app-add-note>
 </div>
 

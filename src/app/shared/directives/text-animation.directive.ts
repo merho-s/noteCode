@@ -10,14 +10,14 @@ export class TextAnimationDirective {
   ngAfterViewInit() {
     let element = this.el.nativeElement as HTMLElement;
     
-    if(element.textContent !== null) {
-      const initialText = element.textContent;
-      element.textContent = "";
+    if(element.innerText !== null) {
+      const initialText = element.innerText;
+      element.innerText = "";
       
       for(let char of initialText) {
         setTimeout(() => {
-          element.textContent += char;
-        }, 20);
+          element.innerText += char;
+        }, 100);
       }
     }
     

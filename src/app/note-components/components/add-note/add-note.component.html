@@ -1,68 +1,69 @@
-<div class="form-card stretch-slide-in-hor">
-    <form [formGroup]="noteForm">
+<div class="stretch-slide-in-toleft-hor">
+    <form id="form-container" [formGroup]="noteForm">
+
+
         <input id="title" type="text" placeholder="Write your title..."  formControlName="title">
+
+
         <div id="tags-section" formArrayName="codetags">
-            <!-- <div *ngIf="tagsEditingMode" class="section-title">
-                Tags 
-            </div> -->
             <div *ngIf="tagsEditingMode" id="tags-search">
-                <div id="search-bar">
+                <div id="search-bar" class="slide-in-ver">
                     <i class="bx bx-search"></i>
                     <input type="text" placeholder="Search tag..." (input)="onSearchTagTyping($event)">
-                    <i class="bx bx-x close-icon" (click)="disableTagsEditingMode()"></i>
-
+                    <i class="bx bx-x delete-tag-icon" (click)="disableTagsEditingMode()"></i>
                 </div>
-                <div class="tags-flex" id="tags-found" *ngIf="tagsFound">
+                <div class="tags-flex" id="tags-found" *ngIf="areTagsFound">
                     <app-tag [isClickable]="true" [text]="tag" startAnimation="slide-in-ver" *ngFor="let tag of searchedTags" (onClickEvent)="onAddTag(tag)"></app-tag>
                 </div>
             </div>
             <div class="tags-flex">
-                <app-tag [isClosable]="tagsEditingMode" [text]="tag" startAnimation="slide-in-ver" endAnimation="slide-in-ver-reverse" *ngFor="let tag of codetags.value; let i = index" (onCloseEvent)="onDeleteTag(i)"></app-tag>
-                <i *ngIf="!tagsEditingMode" id="add-item-btn" class="bx bxs-pencil" (click)="enableTagsEditingMode()"></i>
+                <app-tag [isClosable]="tagsEditingMode" [text]="tag.name" startAnimation="slide-in-ver" endAnimation="slide-in-ver-reverse" *ngFor="let tag of codetags.value; let i = index" (onCloseEvent)="onDeleteTag(i)"></app-tag>
+                <i *ngIf="!tagsEditingMode" id="edit-tags-icon" class="bx bxs-pencil" (click)="enableTagsEditingMode()"></i>
             </div>
         </div>
+
+
         <div id="description-section">
-            <!-- <div *ngIf="descriptionEditingMode" class="section-title">
-                Description
-            </div> -->
             <app-autoresizeable-textarea placeholder="Write your description..." formControlName="description"></app-autoresizeable-textarea>
-            <!-- <textarea id="note-description" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' placeholder="Write your note description..." formControlName="description"></textarea> -->
         </div>
+
+
         <div id="codes-section" formArrayName="codes">
             <div class="section-title">
                 Code snippets
-                <i id="add-item-btn" class="bx bx-plus" (click)="onAddCode()"></i>
+                <i id="add-item-btn" class="bx bx-plus" (click)="onAddCode(0)"></i>
             </div>
-            <div class="stretch-slide-in-hor" *ngFor="let codeForm of codes.controls; let i = index">
-                <div id="single-code" [formGroupName]="i">
+            <div class="stretch-slide-in-toleft-hor" *ngFor="let codeCard of codeCards; let i = index">
+                <div id="single-code" [formGroup]="codeCard.codeForm">
                     <div id="code-header">
                         <div id="code-header-left-part">
                             <i class="bx bx-code-block"></i>
-                            <select id="code-language" formControlName="language">
-                                <option id="select-header" value="">Language</option>
-                                <option *ngFor="let l of codeLanguages" value="{{l.language}}">{{l.language}}</option>
+                            <select id="code-language" formControlName="language" (change)="refreshLanguageHighlight(codeCard)">
+                                <option id="language-option" *ngFor="let l of codeLanguages" value="{{l.language}}">{{l.language}}</option>
                             </select>
                         </div>
-
-                        <i class="bx bx-x close-icon" (click)="onDeleteCode(i)"></i>
+                        <i id="delete-code-icon" class="bx bx-x" (click)="onDeleteCode(i)"></i>
                     </div>
-                    <div id="code-editing-card" *ngIf="codesEditingModes[i]; else elseBlock">
-                        <app-autoresizeable-textarea #codeSnippetEdit (onPressEnterEvent)="disableCodeEditingMode(i)" fontColor="white" backgroundColor="rgb(40, 40, 40)" placeholder="Write your code..." formControlName="code">
+                    <div id="code-editing-card" *ngIf="codeCard.isEditMode; else codeElseBlock">
+                        <app-autoresizeable-textarea id="code-editor" [ngClass]="{'loading-highlight': codeCard.isRefreshingCodeLanguage}" fontColor="white" backgroundColor="rgb(40, 40, 40)" placeholder="Write your code..." formControlName="code">
                         </app-autoresizeable-textarea>
-                        <i class="bx bx-check" (click)="disableCodeEditingMode(i)"></i>
+                        <i id="valid-code-icon" class="bx bx-check" *ngIf="codeCard.codeForm.value.code.length > 0 && !codeCard.isRefreshingCodeLanguage" (click)="disableCodeEditingMode(codeCard)"></i>
+                        <i *ngIf="codeCard.isRefreshingCodeLanguage" id="spinner" class="bx bx-loader-alt bx-spin"></i>
                     </div>
-                    <!-- <textarea *ngIf="codesEditingModes[i]; else elseBlock" id="code-text" type="input" oninput="autoResizeTextarea(this)" placeholder="Write your code..." formControlName="code"></textarea> -->
-                    <ng-template #elseBlock>
-                        <app-code-card (click)="enableCodeEditingMode(i)" [singleCode]="codeForm.value"></app-code-card>
+                    <ng-template #codeElseBlock>
+                        <app-code-card (click)="enableCodeEditingMode(codeCard)" [codeSnippet]="codeCard.codeForm.value"></app-code-card>
                     </ng-template>
                     <div id="code-description">
                         <i class="bx bx-comment-detail"></i>
                         <app-autoresizeable-textarea fontColor="lightgrey" placeholder="Write your description..." formControlName="description"></app-autoresizeable-textarea>
-                        <!-- <textarea type="input" rows=1 oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' placeholder="Write your code description..." formControlName="description"></textarea> -->
                     </div>
                 </div>
             </div>
         </div>
-        <button id="submit-button" class="nc-simple-button" type="submit" (click)="onSubmitForm()" [disabled]="noteForm.invalid">SAVE</button>
+
+
+        <button id="submit-button" class="nc-simple-button fade-in" type="submit" (click)="onSubmitForm()" [hidden]="noteForm.invalid || !isNoteChanged">SAVE</button>
+
+
     </form>
 </div>

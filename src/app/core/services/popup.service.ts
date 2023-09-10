@@ -1,24 +1,18 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, map, tap } from 'rxjs';
-import { Popup } from '../models/popup.model';
+import { Popup } from '../models/popup.interface';
 import { __values } from 'tslib';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class PopupService {
   private popups$ = new Subject<Popup[]>();
   private popups: Popup[]= [];
 
-  constructor(private router: Router) {
-    this.router.events.pipe(
-      tap(event => {
-        if(event instanceof NavigationEnd) {
-          this.clearPopups();
-        }
-      })
-    ).subscribe();
+  constructor() {
   }
 
   get popupsObs$() {
@@ -26,9 +20,11 @@ export class PopupService {
   }
 
   pushPopup(newPopup: Popup) {
-    if(!this.popups.map(p => p.message).includes(newPopup.message)) {
-      this.popups.push(newPopup);
-      this.popups$.next(this.popups);
+    if(this.popups.length < 5) {
+      if(!this.popups.find(p => p.message === newPopup.message) || newPopup.autoCloseable === true) {
+        this.popups.push(newPopup);
+        this.popups$.next(this.popups);
+      } 
     }
   }
 
@@ -38,7 +34,9 @@ export class PopupService {
   }
 
   clearPopups() {
-    this.popups = [];
-    this.popups$.next(this.popups);
+    for(let i = 0; i < this.popups.length; i++) {
+      if(!this.popups[i].autoCloseable)
+        this.deletePopup(i);
+    };
   }
 }

@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, map, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { TokenInfos } from '../models/token.model';
+import { TokenInfos } from '../models/token.interface';
 import { Router } from '@angular/router';
 import { IAuthentication } from '../models/authentication.interface';
 

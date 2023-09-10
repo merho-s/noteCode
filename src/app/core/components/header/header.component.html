@@ -1,7 +1,7 @@
 <div id="header-content">
     <div id="main-title" routerLink="/">
         <h1>.noteCode</h1>
-        <img src="assets/noteCode_logo.png"/>
+        <img src="assets/noteCode_logo.png" alt="noteCode logo"/>
     </div>
     <div class="user-section">
         <a *ngIf="(isAdmin$ | async) && (isLoggedIn$ | async)" routerLink="admin">Admin Panel</a>

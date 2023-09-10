@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { IUser } from '../models/user.interface';
 import { Observable, Subject, tap } from 'rxjs';
+import { Note } from '../models/note.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,10 @@ export class AdminService {
 
   get waitingUsersObs$() {
     return this.waitingUsers$ as Observable<IUser[]>;
+  }
+
+  getAllNotes(): Observable<Note[]> {
+    return this.http.get<Note[]>(`${environment.apiUrl}/admin/notes`)
   }
 
   getAllWaitingUsers() {

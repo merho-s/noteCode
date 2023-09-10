@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http'
-import { Note } from '../models/note.model';
-import { BehaviorSubject, Observable, Subject, map, switchMap, tap } from 'rxjs'
+import { Note } from '../models/note.interface';
+import { Observable, Subject, tap } from 'rxjs'
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { CodeSnippet } from '../models/codesnippet.model';
+import { CodeSnippet } from '../models/codesnippet.interface';
+import { PopupService } from './popup.service';
 
 @Injectable({
     providedIn: 'root'
@@ -12,23 +13,29 @@ import { CodeSnippet } from '../models/codesnippet.model';
 export class NoteService {
     private userNotes$ = new Subject<Note[]>;
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient,
+                private popupService: PopupService) {}
 
     getUserNotesObservable(): Observable<Note[]> {
         return this.userNotes$.asObservable();
     }
 
-    getAllNotes(): Observable<Note[]> {
-        return this.http.get<Note[]>(`${environment.apiUrl}/admin/notes`)
-    }
-
-    getNoteById(id: number): Observable<Note> {
+    getNoteById(id: string): Observable<Note> {
         return this.http.get<Note>(`${environment.apiUrl}/notes/${id}`);
     }
 
-    addNote(note: {title: string, description: string, codes: CodeSnippet[], codetags: string[]}) {
+    addNote(note: Note) {
         return this.http.post<Note>(`${environment.apiUrl}/notes`, note).pipe(
-            tap(() => this.refreshUserNotes())
+            tap((note) => {
+                if(note) {
+                    this.refreshUserNotes();
+                    this.popupService.pushPopup({
+                        message: 'Note created !',
+                        type: 'success',
+                        autoCloseable: true
+                    });
+                }
+            })
         );
     }
 
@@ -38,10 +45,17 @@ export class NoteService {
         ).subscribe();
     }
 
-    updateNote(updatedNote: Note, id: number): Observable<Note> {
-        return this.getNoteById(id).pipe(
-            switchMap(() => this.http.put<Note>(`${environment.apiUrl}/notes/${id}`, updatedNote))
-        )
+    editNote(editedNote: Note): Observable<Note> {
+        return this.http.put<Note>(`${environment.apiUrl}/notes`, editedNote).pipe(
+            tap(() => {
+                this.popupService.pushPopup({
+                    message: 'Note edited !',
+                    type: 'success',
+                    autoCloseable: true
+                });
+                this.refreshUserNotes();
+            })
+        );
     }
 
     deleteNote(id: number): Observable<boolean> {

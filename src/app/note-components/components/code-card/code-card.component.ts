@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CodeSnippet } from 'src/app/core/models/codesnippet.model';
+import { CodeSnippet } from 'src/app/core/models/codesnippet.interface';
 import { HighlightService } from 'src/app/core/services/highlight.service';
 import { CODES_LANGUAGES } from 'src/app/shared/global_constants/languages.const';
 
@@ -10,14 +10,14 @@ import { CODES_LANGUAGES } from 'src/app/shared/global_constants/languages.const
 })
 export class CodeCardComponent {
 
-  @Input() singleCode!: CodeSnippet;
+  @Input() codeSnippet!: CodeSnippet;
   prismLanguage!: string;
   
 
   constructor(private highlightService: HighlightService) {}
   
   ngOnInit() {
-    let codeLanguage = CODES_LANGUAGES.find(l => l.language === this.singleCode.language);
+    let codeLanguage = CODES_LANGUAGES.find(l => l.language === this.codeSnippet.language);
     if (codeLanguage)
       this.prismLanguage = codeLanguage.alias;
   }

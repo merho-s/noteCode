@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Codetag } from '../models/codetag.interface';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ export class TagService {
   constructor(private http: HttpClient) { }
 
   getAllCodetags() {
-    return this.http.get<string[]>(`${environment.apiUrl}/tags`);
+    return this.http.get<Codetag[]>(`${environment.apiUrl}/tags`);
   }
 
 }

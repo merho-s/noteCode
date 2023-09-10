@@ -51,7 +51,6 @@ export class SignUpComponent {
 
   displayInputError(displayError: boolean) {
     displayError = true;
-    console.log(this.displayPasswordError);
   }
 
   onSubmitForm() {

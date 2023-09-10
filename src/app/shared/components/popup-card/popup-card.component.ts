@@ -24,7 +24,7 @@ export class PopupCardComponent {
 
   onClose() {
     this.isClosed = true;
-    this.renderer.addClass(this.elementRef.nativeElement, 'slide-in-hor-right');
+    this.renderer.addClass(this.elementRef.nativeElement, 'slide-in-toright-hor');
     this.elementRef.nativeElement.addEventListener('animationend', () => {
       this.onCloseAnimationEnd()
     })

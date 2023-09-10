@@ -1,6 +1,7 @@
-textarea {
+#autoresizeable-textarea {
+    display: flex;
+    align-items: center;
     border-radius: 5px;
-    padding: 5px;
     width: 100%;
     resize: none;
     border: none;
@@ -8,4 +9,5 @@ textarea {
     outline: none;
     background-color: inherit;
     box-sizing: border-box;
+    font-size: 13px;
 }

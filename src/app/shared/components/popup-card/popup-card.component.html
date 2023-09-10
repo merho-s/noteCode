@@ -1,6 +1,6 @@
 <div
     id="popup-card" 
-    class="slide-in-hor-left" 
+    class="slide-in-toleft-hor" 
     [ngClass]="{ 'error-background': type === 'error', 
                 'success-background': type === 'success', 
                 'info-background': type === 'info' }" 
@@ -14,6 +14,10 @@
         <ng-content></ng-content>
     </div>
     <div *ngIf="autoCloseable" id="bar-container">
-        <div id="progress-bar"></div>
+        <div id="progress-bar" [ngClass]="{
+            'error-progress-bar': type === 'error',
+            'success-progress-bar': type === 'success',
+            'info-progress-bar': type === 'info'
+        }"></div>
     </div>
 </div>

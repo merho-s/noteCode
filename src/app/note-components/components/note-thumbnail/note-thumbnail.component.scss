@@ -8,20 +8,20 @@
     margin-bottom: 5px;
     border-radius: 5px;
     font-size: small;
-    i {
-        margin-right: 5px;
-    }
     #left-part {
         display: flex;
         align-items: center;
+        gap: 2px;
     }
     #delete-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 20px;
+        width: 20px;
         animation: deleteIconAnimation 0.5s;
+        margin-right: 5px;
     }
-}
-
-.delete-animation {
-    animation: slideOutHorizontal 0.25s;
 }
 
 .note-thumbnail-active {
@@ -38,6 +38,18 @@
     }
     #delete-icon:hover {
         color: white;
+    }
+}
+
+@keyframes deleteIconAnimation {
+    from {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
 
