@@ -91,8 +91,8 @@ button, input, select, textarea {
     animation: stretchSlideInHorizontal 0.25s;
 }
 
-.stretch-slide-out-toleft-hor {
-    animation: stretchSlideOutHorizontal 0.5s;
+.stretch-slide-out-toleft-hor-in-vert-list {
+    animation: stretchSlideOutHorizontalInVertList 0.5s;
 }
 
 .slide-in-toleft-hor {
@@ -138,12 +138,17 @@ button, input, select, textarea {
     }
 }
 
-@keyframes stretchSlideOutHorizontal {
+@keyframes stretchSlideOutHorizontalInVertList {
     from {
         margin-left: 0%;
         width: 100%;
     }
+    50% {
+        margin-left: -100%;
+        width: 0%;
+    }
     to {
+        height: 0;
         margin-left: -100%;
         width: 0%;
     }
@@ -166,6 +171,7 @@ button, input, select, textarea {
     }
     to {
         translate: 0;
+        height: 0;
     }
 }
 
