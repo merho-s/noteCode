@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="tags-flex">
-                <app-tag [isClosable]="tagsEditingMode" [text]="tag.name" startAnimation="slide-in-ver" endAnimation="slide-in-ver-reverse" *ngFor="let tag of codetags.value; let i = index" (onCloseEvent)="onDeleteTag(i)"></app-tag>
+                <app-tag [isClosable]="tagsEditingMode" [text]="tag.name" startAnimation="slide-in-ver" endAnimation="slide-out-totop" *ngFor="let tag of codetags.value; let i = index" (onCloseEvent)="onDeleteTag(i)"></app-tag>
                 <i *ngIf="!tagsEditingMode" id="edit-tags-icon" class="bx bxs-pencil" (click)="enableTagsEditingMode()"></i>
             </div>
         </div>

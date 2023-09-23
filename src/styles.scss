@@ -107,8 +107,8 @@ button, input, select, textarea {
     animation: slideInVertical 0.25s;
 }
 
-.slide-in-ver-reverse {
-    animation: slideInVertical 0.25s reverse;
+.slide-out-totop {
+    animation: slideOutVertical 0.25s;
 }
 
 .reduce-size {
@@ -148,6 +148,8 @@ button, input, select, textarea {
         width: 0%;
     }
     to {
+        margin-top: 0;
+        margin-bottom: 0;
         height: 0;
         margin-left: -100%;
         width: 0%;
@@ -162,6 +164,17 @@ button, input, select, textarea {
     to {
         translate: 0;
         opacity: 1;
+    }
+}
+
+@keyframes slideOutVertical {
+    from {
+        translate: 0;
+        opacity: 1;
+    }
+    to {
+        translate: 0 -50px;
+        opacity: 0;
     }
 }
 
