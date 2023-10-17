@@ -1,5 +1,12 @@
-<div id="login-card" class ="flex-column slide-in-toleft-hor">
-    <h2>Connection</h2>
+<div id="login-card" class="flex-column slide-in-toleft-hor" [ngClass]="{ 'loading' : loginLoading }">
+    <div id="loading-card" *ngIf="loginLoading">
+        <div id="loading-img" class="infinite-rotation"><img src="assets/noteCode_logo.png" alt="noteCode logo"/></div>
+    </div>
+    <div id="main-title">
+        <h1>.noteCode</h1>
+        <img src="assets/noteCode_logo.png" alt="noteCode logo"/>
+        <p id="version-annotation">Preview Build</p>
+    </div>
     <form [formGroup]="loginForm" class="flex-column">
         <div class="input-form flex-column">
             <label for="username">Username</label>

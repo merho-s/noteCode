@@ -91,6 +91,10 @@ button, input, select, textarea {
     animation: stretchSlideInHorizontal 0.25s;
 }
 
+.stretch-slide-in-toleft-hor-in-vert-list {
+    animation: stretchSlideInHorizontalInVertList 0.5s;
+}
+
 .stretch-slide-out-toleft-hor-in-vert-list {
     animation: stretchSlideOutHorizontalInVertList 0.5s;
 }
@@ -119,6 +123,10 @@ button, input, select, textarea {
     animation: fadeIn 0.25s ease;
 }
 
+.infinite-rotation {
+    animation: infiniteRotation 1s ease infinite;
+}
+
 @keyframes progressBarAnimation {
     from {
         width: 0;
@@ -138,6 +146,22 @@ button, input, select, textarea {
     }
 }
 
+@keyframes stretchSlideInHorizontalInVertList {
+    from {
+        height: 0;
+        margin-left: 100%;
+        width: 300%;
+    }
+    50% {
+        height: 40px;
+        margin-left: 100%;
+        width: 300%;
+    }
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
 @keyframes stretchSlideOutHorizontalInVertList {
     from {
         margin-left: 0%;
@@ -204,5 +228,14 @@ button, input, select, textarea {
         opacity: 0;
     } to {
         opacity: 1;
+    }
+}
+
+@keyframes infiniteRotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }

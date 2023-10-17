@@ -1,9 +1,61 @@
 #login-card {
+    position: relative;
     border-radius: 5px;
-    box-shadow: lightgrey 4px 10px 20px;
+    background-color: rgb(251, 250, 249);
+    box-shadow: lightgrey 0px 0px 20px;
+    border: solid 1px rgb(232, 230, 227);
     width: 400px;
     padding: 20px;
     margin: auto;
+    margin-top: 100px;
+    #main-title {
+        display:flex;
+        align-items: center;
+        cursor: pointer;
+        img {
+            height: 40px;
+        }
+    }
+    #version-annotation {
+        position: absolute;
+        margin-top: 50px;
+        margin-left: 5px;
+        color: rgba(0, 0, 0, 0.101);
+        font-size: small;
+        // z-index: 1000;
+    }
+}
+#loading-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.463);
+    backdrop-filter: blur(6px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    #loading-img {
+        height: 25px;
+        width: 25px;
+        padding: 1px;
+        border-radius: 50%;
+        border: solid 3px black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+input {
+    border: solid 1px rgb(232, 230, 227);
+    border-radius: 5px;
+    // background-color: inherit;
 }
 
 .flex-column {
