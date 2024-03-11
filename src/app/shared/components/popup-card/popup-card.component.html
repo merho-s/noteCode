@@ -1,10 +1,9 @@
-<div
+<div 
     id="popup-card" 
     class="slide-in-toleft-hor" 
     [ngClass]="{ 'error-background': type === 'error', 
                 'success-background': type === 'success', 
                 'info-background': type === 'info' }" 
-    (animationend)="onCloseAnimationEnd()"
 >
     <div id="popup-header">
         <p>{{ type | titlecase }}</p>

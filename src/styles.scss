@@ -4,7 +4,7 @@
 @import "~prismjs/themes/prism-okaidia.css";
 @import "https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css";
 
-
+//global styles
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -103,8 +103,9 @@ button, input, select, textarea {
     animation: slideInHorizontal 0.25s;
 }
 
-.slide-in-toright-hor {
-    animation: slideInHorizontal 0.25s reverse;
+
+.slide-out-toright-in-vert-list {
+    animation: slideOutToRightInVertList 0.5s;
 }
 
 .slide-in-ver {
@@ -148,16 +149,12 @@ button, input, select, textarea {
 
 @keyframes stretchSlideInHorizontalInVertList {
     from {
-        height: 0;
-        margin-left: 100%;
-        width: 300%;
-    }
-    50% {
-        height: 40px;
+        max-height: 0;
         margin-left: 100%;
         width: 300%;
     }
     to {
+        max-height: 100px;
         margin-left: 0%;
         width: 100%;
     }
@@ -204,11 +201,22 @@ button, input, select, textarea {
 
 @keyframes slideInHorizontal {
     from {
-        translate: 200% 0;
+        translate: 125% 0;
     }
     to {
         translate: 0;
-        height: 0;
+    }
+}
+
+@keyframes slideOutToRightInVertList {
+    from {
+        translate: 0;
+        max-height: 100vh;
+    }
+    to {
+        translate: 125% 0;
+        max-height: 0;
+        margin: 0;
     }
 }
 

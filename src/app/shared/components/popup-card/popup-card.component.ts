@@ -23,10 +23,10 @@ export class PopupCardComponent {
   }
 
   onClose() {
-    this.isClosed = true;
-    this.renderer.addClass(this.elementRef.nativeElement, 'slide-in-toright-hor');
+    this.renderer.addClass(this.elementRef.nativeElement, 'slide-out-toright-in-vert-list');
     this.elementRef.nativeElement.addEventListener('animationend', () => {
-      this.onCloseAnimationEnd()
+      this.isClosed = true;
+      this.onCloseAnimationEnd();
     })
   }
 
