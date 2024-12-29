@@ -220,11 +220,11 @@ export class AddNoteComponent implements OnInit {
 
   onSubmitForm() {
     //ADD CODE SNIPPETS LANGUAGES AS TAGS
-    // for(let c of this.codes.value) {
-    //   if (c.language !== 'Plain Text') {
-    //     this.onAddTag(c.language);
-    //   }
-    // }
+    for(let c of this.codes.value) {
+      if (c.language !== 'Plain Text') {
+        this.onAddTag(c.language);
+      }
+    }
 
     if (this.noteForm.value.title === '') {
       if(this.noteForm.value.description !== '')

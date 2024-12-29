@@ -18,6 +18,7 @@ import 'prismjs/components/prism-scss';
 import 'prismjs/components/prism-csharp';
 // import 'prismjs/components/prism-cpp';
 import 'prismjs/components/prism-c';
+import 'prismjs/components/prism-sql';
 // import 'prismjs/components/prism-fsharp';
 // import 'prismjs/components/prism-fortran';
 // import 'prismjs/components/prism-json';
