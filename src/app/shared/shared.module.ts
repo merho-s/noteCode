@@ -5,7 +5,7 @@ import { TagComponent } from './components/tag/tag.component';
 import { TextAnimationDirective } from './directives/text-animation.directive';
 import { PopupCardComponent } from './components/popup-card/popup-card.component';
 import { AutoresizeableTextareaComponent } from './components/autoresizeable-textarea/autoresizeable-textarea.component';
-
+import { ShortenPipe } from './pipes/shorten.pipe';
 
 
 @NgModule({
@@ -14,6 +14,7 @@ import { AutoresizeableTextareaComponent } from './components/autoresizeable-tex
     TextAnimationDirective,
     PopupCardComponent,
     AutoresizeableTextareaComponent,
+    ShortenPipe
   ],
   imports: [
     CommonModule,
@@ -27,7 +28,8 @@ import { AutoresizeableTextareaComponent } from './components/autoresizeable-tex
     TagComponent,
     PopupCardComponent,
     TextAnimationDirective,
-    AutoresizeableTextareaComponent
+    AutoresizeableTextareaComponent,
+    ShortenPipe
   ]
 })
 export class SharedModule { }

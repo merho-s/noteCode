@@ -1,12 +1,9 @@
-<div *ngIf="!deleteAnimationEnded"
-    class="note-thumbnail stretch-slide-in-toleft-hor-in-vert-list" 
-    [ngClass]="{'note-thumbnail-active': isActive, 'stretch-slide-out-toleft-hor-in-vert-list': isDeleted}"
-    (animationend)="onDeleteAnimationEnd()" 
-    (click)="onViewNote()"
-    >
-    <div id="left-part">
-        <i class="bx bx-notepad"></i>
-        <p>{{ note.title }}</p>
-    </div>
-    <i id="delete-icon" (click)="onDeleteNote($event)" class="bx bxs-trash-alt"></i>  
-</div>  
+<div *ngIf="!deleteAnimationEnded" class="note-thumbnail stretch-slide-in-toleft-hor-in-vert-list"
+  [ngClass]="{'note-thumbnail-active': isActive, 'stretch-slide-out-toleft-hor-in-vert-list': isDeleted}"
+  (animationend)="onDeleteAnimationEnd()" (click)="onViewNote()">
+  <div id="left-part">
+    <i class="bx bx-notepad"></i>
+    <p>{{ note.title | shorten:25 }}</p>
+  </div>
+  <i id="delete-icon" (click)="onDeleteNote($event)" class="bx bxs-trash-alt"></i>
+</div>
